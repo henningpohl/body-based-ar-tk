@@ -1,0 +1,27 @@
+{
+  "id": "distance",
+  "name": "distance",
+  "endpoints": [
+    {
+      "id": "inputA",
+      "name": "input one",
+      "scope": "primitive",
+      "type": "primitive",
+      "direction": "in"
+    },
+    {
+      "id": "inputB",
+      "name": "input two",
+      "scope": "primitive",
+      "type": "primitive",
+      "direction": "in"
+    },
+    {
+      "id": "distance",
+      "name": "distance",
+      "scope": "number",
+      "type": "number",
+      "direction": "out"
+    }
+  ]
+}

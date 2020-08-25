@@ -1,0 +1,23 @@
+div[id^=setup-editor], 
+div[id^=loop-editor] {
+  width: 300px;
+  height: 200px;
+  /* position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; */
+}
+
+.script input {
+  max-width: 95%;
+}
+
+.window.script label {
+  font-size: 1em;
+}
+
+.script label .material-icons {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}

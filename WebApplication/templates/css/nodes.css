@@ -1,0 +1,220 @@
+/* import node-specific styling */
+{% for node in node_definitions %}
+{% set node = node.replace('\\', '/') %}
+@import url("{{url_for('node.static', filename=node)}}");
+{% endfor %}
+
+
+/* WINDOW CLASS STYLING */
+.window label {
+  font-size: 0.8em;
+  margin-bottom: 0px;
+  float: left;
+}
+
+.window span[class^="col-md-"] {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.endpoint-type.out {
+  margin-left: -10px;
+}
+
+/* colors from http://materialuicolors.co/?utm_source=launchers */
+.window .nout {
+  height: 100%; 
+  display:block; 
+  margin: 0px; 
+  padding-right:20px; 
+  font-size:12px;
+}
+
+.window .list-group-item:last-child {
+  border-bottom: none; 
+  padding-bottom:0px; 
+  margin-bottom:0px;
+}
+
+.window .nin {
+  height: 100%; 
+  display:block; 
+  margin: 0px; 
+  padding-left:20px; 
+  font-size:12px; 
+  margin-left: -8px !important;
+}
+
+.window { 
+  border-radius: 10px; 
+  font-family: Open Sans 
+}
+.card-header { 
+  border-radius: 10px 10px 0px 0px; 
+  padding: 5px; 
+  font-weight: 600; 
+  font-size: 18px;
+  border:none;
+  font-size: 1.3em;
+}
+.window .list-group { 
+  font-weight: 400; 
+  font-size: 14px; 
+  padding-bottom: 10px;
+}
+
+.endpoint-type {
+  font-size:11px;
+}
+
+#canvas .window {
+  z-index: 10;
+  cursor: pointer;
+  position: absolute;
+  padding: 0px;
+}
+
+.window .list-group-item {
+  padding: 0.25rem 0.5rem;
+  margin-bottom:1px; 
+  border-bottom:1px solid #aaa;
+  max-height: fit-content;
+}
+
+.window .list-group-item .material-icons {
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
+}
+
+.window .list-group-item .delete-input:not(.mergeable) .material-icons  {
+  margin-left: -1.15rem;
+  margin-right: -1.25rem;
+}
+
+
+/* MULTIPLE NODES USAGE */
+.window {
+  width: 220px;
+}
+
+.window.switch,
+.window.random {
+  width: 270px;
+}
+
+.window.script,
+.window.multiArrayOp {
+  width: 350px;
+}
+
+.delete-node {
+  font-size: 18px;
+}
+.delete-node:hover,
+.delete-node:active,
+.delete-node:focus {
+  color: #d9534f;
+}
+
+.build-array:hover,
+.build-array:active,
+.build-array:focus,
+.add-endpoint:hover,
+.add-endpoint:active,
+.add-endpoint:focus {
+  color: #5cb85c;
+}
+
+.card {
+  border: none;
+}
+
+.list-group-flush .list-group-item {
+  border: none !important;
+}
+
+input, select {
+  max-width: 100%;
+}
+
+select {
+  width: 100%;
+}
+
+
+/* JSPLUMB STYLING */
+.push-top {
+  z-index: 30 !important;
+}
+
+
+.jtk-endpoint {
+  opacity: 0.5;
+}
+
+.jtk-endpoint.dragActive:not(.out-endpoint),
+.jtk-endpoint-connected {
+  opacity: 1;
+}
+.jtk-endpoint.dragActive {
+  border: none;
+}
+
+.jtk-endpoint { 
+  z-index: 26;
+  stroke-linecap: round;
+}
+
+.connector-arrow {
+  z-index: 16;
+  cursor:pointer; 
+  fill: #4E5D6C;
+}
+
+.connector-trash {
+  z-index: 18;
+  color: #d9534f;
+  -webkit-text-stroke: 1px rgb(51, 51, 51);
+  cursor:pointer; 
+  opacity: 0;
+}
+
+.connector-trash:hover {
+  opacity: 1;
+}
+
+.jtk-connector.jtk-dragging {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 40;
+  animation: marching_ants 1s linear infinite normal;
+}
+
+.jtk-demo-canvas {    
+  display: flex;
+  position:relative;
+}
+
+.endpoint-field.text-right {
+  padding-right: 15px !important;
+}
+
+/** LINKS IN WINDOWS **/
+.drag-locked { border:1px solid red; }
+.cmdLink { font-size:0.80em;}
+
+/** DRAG/DROP CLASSES **/
+.dragActive { border:2px dotted orange; }
+.dropHover { border:1px dotted red; }
+
+.input-group {
+  width: 95%;
+}
+
+.window-selected {
+  border: 1px solid white;
+  box-shadow: 0px 0px 6px 0px;
+}
+
+i.help {
+  margin-left: 5px !important;
+}

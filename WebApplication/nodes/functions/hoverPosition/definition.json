@@ -1,0 +1,20 @@
+{
+	"endpoints": [
+		{
+			"direction": "in",
+			"id": "input",
+			"name": "position",
+			"scope": "position",
+			"type": "position"
+		},
+		{
+			"direction": "out",
+			"id": "output",
+			"name": "position",
+			"scope": "position",
+			"type": "position"
+		}
+	],
+	"id": "hoverPosition",
+	"name": "hover position"
+}

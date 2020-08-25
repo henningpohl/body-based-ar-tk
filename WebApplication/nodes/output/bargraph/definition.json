@@ -1,0 +1,34 @@
+{
+	"endpoints": [
+		{
+			"direction": "in",
+			"id": "string",
+			"name": "labels",
+			"scope": "string number strings numbers",
+			"type": "string"
+		},
+		{
+			"direction": "in",
+			"id": "number",
+			"name": "values",
+			"scope": "number numbers",
+			"type": "number"
+		},
+		{
+			"direction": "in",
+			"id": "color",
+			"name": "colors",
+			"scope": "color colors",
+			"type": "color"
+		},
+		{
+			"direction": "in",
+			"id": "position",
+			"name": "graph position",
+			"scope": "position",
+			"type": "position"
+		}
+	],
+	"id": "bargraph",
+	"name": "bargraph"
+}

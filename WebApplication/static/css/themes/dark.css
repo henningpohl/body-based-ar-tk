@@ -1,0 +1,53 @@
+/* DARK THEME */
+body {
+  background: #555;
+}
+
+.bg-primary {
+  background: #333 !important;
+}
+
+
+.dropdown-menu,
+.alert-dark,
+.btn-light,
+.bg-dark,
+#sidebar {
+	background: #666 !important;
+  border-color: #666;
+}
+
+.btn-light {
+  border: 1px solid #555 !important;
+}
+
+.btn-dark {
+  background: #555 !important;
+  border-color: #555;
+}
+
+.btn-dark {
+  border-color: #aaa;
+}
+
+.modal-content,
+.list-group-item,
+.card {
+  background-color: #333;
+}
+
+.badge-secondary,
+.btn-dark:hover,
+.btn-secondary {
+  background-color: #333;
+  border-color: #333;
+}
+
+#sidebar ul li a:hover {
+  color: #333 !important;
+  background-color: #fff !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: inherit;
+}

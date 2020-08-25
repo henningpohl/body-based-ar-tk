@@ -1,0 +1,66 @@
+.material-icons { vertical-align: middle; }
+
+body {
+	font-size:12px;
+}
+
+#node-entry .node-editor {
+	margin-top: 15px;
+	width: 100%;
+	height: 750px;
+}
+
+#node-entry h5 {
+	border-bottom: 1px solid #fff;
+}
+
+.jconfirm {
+	color: #333
+}
+
+.list-group .list-group-item-action {
+ font-size: 1.1em;
+}
+
+.list-group-sm {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin-top: 5px;
+}
+
+.grid .card {
+	margin-bottom: 30px;
+}
+
+.grid .card .card-title {
+	border-bottom: 1px solid #fff;
+}
+
+.btn-danger,
+.alert-danger {
+  background-color: #ff6859;
+}
+
+.badge-primary,
+.btn-primary:hover,
+.btn-primary,
+.btn-success {
+  background-color: #1eb980;
+  border-color: #1eb980;
+}
+
+.text-success,
+.build-array:hover, 
+.build-array:active, 
+.build-array:focus, 
+.add-endpoint:hover, 
+.add-endpoint:active, 
+.add-endpoint:focus {
+  color: #1eb980 !important;
+}
+
+.btn-warning {
+  background-color: #f9aa33;
+}
+
+

@@ -1,0 +1,68 @@
+{% extends 'base.html'%}
+
+{% block title %}Documentation{% endblock %}
+
+{% macro printDocCard(item) -%}
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">artk.{{item.name}}</h5>
+    {% if item.type == 'variable' %}
+      <b style="font-size: 1.1em">
+        <span class="badge badge-primary">{{item.vartype}}</span> 
+        Variable with default: {{item.definition}}
+      </b> 
+    {% elif item.type == 'function' %}
+      <b style="font-size: 1.1em">
+        Defined as: {{item.definition}}
+      </b>
+    {% endif %}
+    <p class="card-text">
+      {{item.description}}
+      {% for param in item.parameters %}
+        <br/><b>{{param.name}}</b> &nbsp; <span class="badge badge-primary">{{param.type}}</span> &nbsp; {{param.description}}
+      {% endfor %}
+    </p>
+  </div>
+</div>
+{%- endmacro %}
+
+{% block content %}
+<div class="container">
+  <div class="page-header">
+    <div class="row">
+      <div>
+        <h1 style="margin-top: 15px;">artk Documentation</h1>
+      </div>
+    </div>
+
+    <div class="row"><h3>Functions</h3></div>
+    <div class="row grid">
+      {% for item in docs if item.type == 'function' %}
+        <div class="col-md-4">
+          {{ printDocCard(item) }}
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="row"><h3>Fields</h3></div>
+    <div class="row grid">
+      {% for item in docs if item.type == 'variable' %}
+        <div class="col-md-4">
+          {{ printDocCard(item) }}
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/vendor/masonry.pkgd.min.js') }}"></script>
+<script>
+$('.grid').masonry({
+  itemSelector: '.col-md-4'
+});
+</script>
+{% endblock %}
+

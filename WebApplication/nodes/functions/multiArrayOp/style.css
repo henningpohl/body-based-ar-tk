@@ -1,0 +1,8 @@
+.window.multiArrayOp label {
+  font-size: 1em;
+}
+
+.multiArrayOp label .material-icons {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}

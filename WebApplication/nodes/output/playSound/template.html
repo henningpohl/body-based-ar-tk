@@ -1,0 +1,15 @@
+<script type="text/x-handlebars-template" id="soundFileTemplate">
+  <div class="border border-dark bg-primary drop-target mb-3" data-eid="{{id}}">
+      <h5>Drop sound here</h5>
+      <h6>Current file: <span class='filename'>none</span></h6>
+      
+      <div>
+        <audio src="{{field.values.sound_file.src}}"></audio>
+        <a href='#'><i class="material-icons md-48">play_circle_outline</i></a>
+      </div>
+  </div>
+</script>
+
+<script>
+  Handlebars.registerPartial('soundFile', $('#soundFileTemplate').html());
+</script>

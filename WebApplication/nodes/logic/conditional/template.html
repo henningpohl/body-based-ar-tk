@@ -1,0 +1,52 @@
+<!-- CONDITION -->
+<script type="text/x-handlebars-template" id="conditionInputTemplate">
+  <label>connect the input</label>
+</script>
+<script>
+  Handlebars.registerPartial('condition', $('#conditionInputTemplate').html())
+</script>
+
+<script type="text/x-handlebars-template" id="stringConditionInputTemplate">
+  <div class="condition-inputs">
+    <label>string equality</label>
+    {{dynamic 'text' input }}
+  </div>
+</script>
+<script>
+  Handlebars.registerPartial('string-condition', $('#stringConditionInputTemplate').html())
+</script>
+
+<script type="text/x-handlebars-template" id="numberConditionInputTemplate">
+  <div class="condition-inputs">
+    <label>condition</label>
+    {{dynamic 'select' number_select }}
+    <label>number</label>
+    {{dynamic 'number' number_input }}
+  </div>
+</script>
+
+<script>
+  Handlebars.registerPartial('number-condition', $('#numberConditionInputTemplate').html())
+</script>
+
+<script type="text/x-handlebars-template" id="poseConditionInputTemplate">
+  <div class="condition-inputs">
+    <label>detected pose</label>
+    {{dynamic 'select' pose_select }}
+  </div>
+</script>
+
+<script>
+  Handlebars.registerPartial('pose-condition', $('#poseConditionInputTemplate').html())
+</script>
+
+<script type="text/x-handlebars-template" id="emotionConditionInputTemplate">
+  <div class="condition-inputs">
+    <label>detected emotion</label>
+    {{dynamic 'select' emotion_select }}
+  </div>
+</script>
+
+<script>
+  Handlebars.registerPartial('emotion-condition', $('#emotionConditionInputTemplate').html())
+</script>

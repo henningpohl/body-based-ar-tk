@@ -1,0 +1,24 @@
+<script type="text/x-handlebars-template" id="numberInputTemplate">
+  {{#if field.label}}<label>{{field.label}}</label>{{/if}}
+  <input type="number" data-eid="{{id}}" data-type="{{type}}" placeholder="0.0" step="0.1" class="form-control form-control-sm col-sm-8" value="{{lookup field.values id}}" id="input-{{parentId}}-{{id}}" />
+</script>
+
+<script>
+Handlebars.registerPartial('number', $('#numberInputTemplate').html())
+</script>
+
+<script type="text/x-handlebars-template" id="deleteNumberInputTemplate">
+  <div class="input-group">
+    {{#if field.label}}<label>{{field.label}}</label>{{/if}}
+    <input type="number" data-eid="{{id}}" data-type="{{type}}" placeholder="0.0" step="0.1" class="form-control form-control-sm col-sm-8" value="{{lookup field.values id}}" id="input-{{parentId}}-{{id}}" class="form-control" />
+    <div class="input-group-append">
+      <button class="btn btn-secondary btn-sm delete-input" type="button">
+        <i class="material-icons md-14">close</i>
+      </button>
+    </div>
+  </div>
+</script>
+
+<script>
+Handlebars.registerPartial('deleteable-number', $('#deleteNumberInputTemplate').html())
+</script>

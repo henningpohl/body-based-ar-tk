@@ -1,0 +1,13 @@
+<script type="text/x-handlebars-template" id="imageFileTemplate">
+  <div class="image-wrapper" id="img-{{id}}">
+    <p><em>Current image:</em></p>
+    <img src="{{field.values.image_file.src}}" class="image-upload"/>
+  </div>
+  <div class="border border-dark bg-primary drop-target mb-3" data-eid="{{id}}">
+    <h5>Drop image here</h5>
+  </div>
+</script>
+
+<script>
+  Handlebars.registerPartial('imageFile', $('#imageFileTemplate').html());
+</script>

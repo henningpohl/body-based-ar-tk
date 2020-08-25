@@ -1,0 +1,195 @@
+  {% extends 'base.html'%}
+
+  {% block title %}Available Nodes{% endblock %}
+
+  {% block head %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/vendor/jquery-confirm.min.css') }}">
+  {% endblock %}
+
+  {% macro noderow(number, catName, catIcon, nodeName) -%}
+  <tr>
+    <th scope="row">{{number}}</th>
+    <td><i class="material-icons menu-icon">{{catIcon}}</i> {{catName}}</td>
+    <td>{{nodeName}}</td>
+    <td>
+      <a href="#" class="btn btn-warning btn-sm duplicate-node" role="button" title="duplicate node" data-catname="{{catName}}" data-nodename="{{nodeName}}">
+        <i class="material-icons">file_copy</i> 
+        <!-- delete -->
+      </a>
+    </td>
+    <td>
+      <a href="/node/edit/{{catName}}/{{nodeName}}" class="btn btn-primary btn-sm" role="button" title="edit node">
+        <i class="material-icons">edit</i> 
+        <!-- edit -->
+      </a>
+    </td>
+    <td>
+        <button data-href="/node/delete/{{catName}}/{{nodeName}}" class="btn btn-danger btn-sm delete-node" title="delete node">
+          <i class="material-icons">delete</i> 
+          <!-- delete -->
+        </button>
+    </td>
+  </tr>
+  {%- endmacro %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div>
+      <h1 style="margin-top: 15px;">Shared code and styles</h1>
+      <p>Some functionality is shared across editor nodes and components. Check out what's there to simplify your custom nodes, or add new shared functionality.</p>
+      {% for sname, slabel in shared_edits %}
+        <a href="{{url_for('node.edit_shared', name=sname)}}" class="btn btn-primary mx-2">{{slabel}} <i class="material-icons">edit</i></a>
+      {% endfor %}
+    </div>
+  <div class="row">
+    <div>
+      <h1 style="margin-top: 15px;">Available nodes</h1>
+      <p>All projects are asembled from these nodes. Here you can edit how they appear in the editor, how they connect, and what they do at runtime. You can also create new nodes: from scratch or by cloning an existing one.</p>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col" width="10%">#</th>
+          <th scope="col" width="20%">Category</th>
+          <th scope="col" width="60%">Name</th>
+          <th scope="col" colspan="3" width="10%">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% set rowCount = [1] %}
+        {% for cat in categories %}
+          {% for item in cat['items'] %}
+            {% if 'items' in item  %}
+              {% for childNode in item['items'] %}
+                {{noderow(rowCount[0], cat.name + '/' + item.name, cat.icon, childNode.name)}}
+                {% if rowCount.append(rowCount.pop() + 1) %}{% endif %}
+              {% endfor %}
+            {% else %}
+              {{noderow(rowCount[0], cat.name, cat.icon, item.name)}}
+              {% if rowCount.append(rowCount.pop() + 1) %}{% endif %}
+            {% endif %}
+          {% endfor %}
+          <tr class="table-secondary"><td colspan="6"></td></tr>
+        {% endfor %}
+        <tr>
+          <th scope="row">{{rowCount[0]}}</th>
+          <td>
+            <select class="form-control form-control-sm" name="node_cat">
+              {% for cat in categories %}
+                <option value="{{cat.name}}">{{cat.name}}</option>
+              {% endfor %}
+            </select>
+          </td>
+          <td>
+            <input type="text" class="form-control form-control-sm" name="node_id" placeholder="Node id" />
+          </td>
+          <td>
+            <button class="btn btn-success btn-sm" id="create-node">
+              <i class="material-icons">add_box</i>
+              <!-- create -->
+            </button>
+          </td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/vendor/jquery-confirm.min.js') }}"></script>
+  <script>
+    $(function () {
+      $('.delete-node').click(function (e) {
+        e.preventDefault();
+        $.confirm({
+          animation: 'none',
+          title: 'Delete',
+          content: 'Are you sure you want to delete this node?',
+          buttons: {
+            yes: {
+              action : () => {
+                url = $(this).data('href');
+                window.location.href = url;
+              },
+              btnClass: "btn-danger",
+              keys: ['enter'],
+            },
+            no: function () {},
+          }
+        });
+      });
+
+      $('.duplicate-node').click(function (e) {
+        catname = $(this).data('catname')
+        ognodename = $(this).data('nodename')
+        $.confirm({
+          title: 'Duplicate node',
+          content: `
+          <form action="" class="formName">
+            <div class="form-group">
+              <label>Select category</label>
+              <select class="form-control" name="node_cat" id="node_cat" required style="border: 1px solid #EBEBEB; margin-bottom:15px;">
+                {% for cat in categories %}
+                  <option value="{{cat.name}}">{{cat.name}}</option>
+                {% endfor %}
+              </select>
+              <label>Enter node name</label>
+              <input type="text" placeholder="Your name" class="form-control" id="node_name" style="border: 1px solid #EBEBEB;" name="node_name" value="`+ognodename+`Two" required/>
+            </div>
+          </form>`,
+          buttons: {
+            formSubmit: {
+                text: 'Duplicate',
+                btnClass: 'btn-blue',
+                action: function () {
+                  var nodename = this.$content.find('#node_name').val();
+                  var nodecat = this.$content.find('#node_cat').val();
+                  if(nodename == null) {
+                    $.alert('write a node name'); return;
+                  }
+                  if(nodecat == null) {
+                    $.alert('select a node category'); return;
+                  }
+                  url = `/node/duplicate/${catname}/${ognodename}/${nodecat}/${nodename}`
+                  console.log(url);
+                  window.location.href = url;
+                }
+            },
+            cancel: function () {
+                //close
+            },
+          },
+          onContentReady: function () {
+            this.$content.find('#node_cat').val(catname);
+            // bind to events
+            var jc = this;
+            this.$content.find('form').on('submit', function (e) {
+                // if the user submits the form by pressing enter in the field.
+                e.preventDefault();
+                jc.$$formSubmit.trigger('click'); // reference the button and click it
+            });
+          }
+        });
+      });
+
+      $('#create-node').click(function () {
+        params = (data) => {
+          return Object.keys(data).map(key => `${key}=${encodeURIComponent(data[key])}`).join('&');
+        }
+
+        data = {
+          name: $('input[name="node_id"]').val(),
+          category: $('select[name="node_cat"]').val(),
+        }
+        url =`{{url_for('node.create')}}?${params(data)}`;
+        console.log(url);
+        window.location.href = url;
+      });
+    });
+  </script>
+{% endblock %}

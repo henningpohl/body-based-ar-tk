@@ -1,0 +1,3 @@
+[submodule "Libraries/socket.io-uwp"]
+	path = Libraries/socket.io-uwp
+	url = https://github.com/henningpohl/socket.io-uwp

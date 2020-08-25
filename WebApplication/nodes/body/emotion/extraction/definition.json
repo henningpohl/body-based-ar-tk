@@ -1,0 +1,34 @@
+{
+	"endpoints": [
+		{
+      "id": "input",
+      "name": "input",
+      "scope": "emotion",
+      "type": "emotion",
+      "direction": "in"
+    },
+    {
+      "id": "op",
+      "name": "operator",
+      "scope": "",
+      "type": "",
+      "direction": "",
+      "field": {
+        "type": "op",
+        "emotion_options": {
+          "emotion_confidence": "emotion confidence",
+          "most_confident_emotion": "most confident emotion"
+        }
+      }
+    },
+    {
+      "id": "output",
+      "name": "output",
+      "scope": "any",
+      "type": "any",
+      "direction": "out"
+    }
+  ],
+	"id": "emotionOp",
+	"name": "emotion operators"
+}

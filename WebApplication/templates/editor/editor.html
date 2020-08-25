@@ -1,0 +1,219 @@
+{% extends 'base.html'%}
+
+{% block title %}{{project.name}}{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/editor.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sidebar.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/vendor/jquery-confirm.min.css') }}">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="/node/build/editor/css">
+{% if figurecss %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/figure.css') }}">
+{% endif %}
+
+{% endblock %}
+
+{% macro menuEntry(node) -%}
+{% set label = nodes[node.name]['name'] if node.name in nodes else '_' + node.name %}
+<li>
+  <a href="#" onclick="addNode({type: '{{ node.name }}'})">{{label}}</a>
+</li>
+{%- endmacro %}
+
+{% macro menuSubEntry(subcat) -%}
+<li class="nav-item dropright">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{subcat['name']}}
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    {% for node in subcat['items'] %}
+    {% set l = nodes[node['name']]['name'] if node['name'] in nodes else '_' + node['name'] %}
+      <a class="dropdown-item" href="#" onclick="addNode({type: '{{ node.name }}'})">{{l}}</a>
+    {% endfor %}
+  </div>
+</li>
+{%- endmacro %}
+
+{% macro menuCategory(cat) -%}
+<li>
+  <a href="#submenu{{cat.name}}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+    <i class="material-icons menu-icon">{{cat.icon}}</i> {{cat.name}}
+  </a>
+  <ul class="collapse list-unstyled submenu" id="submenu{{cat.name}}">
+    {% for node in cat['items'] %}
+      {% if 'items' in node %}
+        {{ menuSubEntry(node) }}
+      {% else %}
+        {{ menuEntry(node) }}
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+</li>
+{%- endmacro %}
+
+{% block content %}
+<div class="wrapper">
+  {# https://bootstrapious.com/p/bootstrap-sidebar #}
+  <!-- Sidebar  -->
+  <nav id="sidebar" class="no-print">
+    <ul class="list-unstyled components">
+      {% for cat in categories %}
+        {{ menuCategory(cat) }}
+      {% endfor %}
+    </ul>
+
+    <ul class="list-unstyled components">
+      <li>
+        <a href="#block-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="material-icons menu-icon">widgets</i>
+            Building blocks
+        </a>
+        <ul class="collapse list-unstyled submenu" id="block-submenu">
+
+        </ul>
+      </li>
+    </ul>
+
+    <ul class="list-unstyled CTAs">
+      <li>
+        <a href="#" id="delete-scene" class="article alert alert-danger">
+          <i class="material-icons md-16" style="margin-top: -4px; margin-right: 3px;">delete_forever</i>
+          Delete everything
+        </a>
+      </li>
+      <li>
+        <a href="#" id="key-bindings" class="article alert alert-dark">
+          <i class="material-icons md-16 pull-left" style="margin-top: -3px; margin-right: 3px;">keyboard</i>
+          Key bindings
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Page Content  -->
+  <div id="last-saved" class="no-print"></div>
+  <div id="content">
+    <div id="canvas"></div>
+  </div>
+
+  <div id="select-mode-nav" class="no-print">
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group" role="group" aria-label="First group">
+        <button type="button" class="btn btn-dark" id="save-selected" title="save selection as building block">
+          <i class="material-icons">move_to_inbox</i>
+        </button>
+        <button type="button" class="btn btn-dark" id="delete-selected" title="delete selection">
+          <i class="material-icons">delete_forever</i>
+        </button>
+        <button type="button" class="btn btn-dark" id="select-all" title="select all nodes">
+          <i class="material-icons">layers</i>
+        </button>
+        <button type="button" class="btn btn-dark" id="deselect-all" title="deselect all nodes">
+          <i class="material-icons">layers_clear</i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <nav class="navbar fixed-bottom navbar-dark bg-dark" id="deviceManager">
+    <form class="form-inline my-2 my-lg-0">
+    </form>
+  </nav>
+</div>
+
+{% endblock %}
+
+{# 
+  https://github.com/jsplumb/jsplumb/tree/master/demo/draggableConnectors 
+  https://jsplumbtoolkit.com/community/demo/draggableConnectors/index.html
+#}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/vendor/handlebars-v4.1.2.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/jsplumb.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/ace/ace.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/jquery-confirm.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/vanilla-picker.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/socket.io.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/panzoom.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/sprintf.min.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.4/rgbcolor.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stackblur-canvas@^1/dist/stackblur.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvg/dist/browser/canvg.min.js"></script>
+
+    <script src="{{ url_for('static', filename='js/jsplumb.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/devices.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/handlebars.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/editor.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/keybinds.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/node.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/node_helpers.js') }}"></script>
+
+
+{# Pulling in handlebars.js templates #}
+{% include 'editor/partials/node.html' %}
+
+{% autoescape false %}
+{{ node_templates }}
+<script>
+{{ node_templates_js }}
+</script>
+{% endautoescape %}
+
+{% include 'editor/partials/device.html' %}
+
+<script type="text/javascript">
+
+/* all node types */
+var nodes = {{nodes|tojson}};
+/* the projects saved scene */
+var scene = {{scene|tojson}};
+/* the project id */
+var pid = {{pid}};
+/* the jsPlumb instance */
+var inst = null;
+/* the different jsPlumb endpoints */
+var endpointTypes = null;
+/* connected devices */
+var devices = { devices: {} };
+/* nodes on the canvas */
+var classNodes = {};
+/* list of all scopes */
+var any_scope = {{any_scope|tojson}};
+/* initialize the websocket */
+var socket = io.connect('/', { transports: ['websocket'] });
+/* saved building blocks */
+var blocks = {{blocks|safe}};
+/* selected nodes */
+var selected = [];
+/* panzoom instance */
+var pz = null;
+
+/* when connect resonds */
+socket.on('connect', function() {
+  // console.log('connected')
+  socket.emit('join', {pid: pid});
+});
+
+/* receive devices from the server */
+socket.on('devices', function(msg) {
+  for (var k in msg.devices){
+    md = msg.devices[k]
+    dd = devices.devices.hasOwnProperty(k) ? devices.devices[k] : md;
+    md.sync = dd.hasOwnProperty('sync') ? dd.sync : false
+    devices.devices[k] = md
+  }
+  // delete disconnected devices
+  diff = Object.keys(devices.devices).filter(i => Object.keys(msg.devices).indexOf(i) < 0)
+  diff.forEach(e => delete devices.devices[e] );
+  updateDevices();
+});
+
+</script>
+{% endblock %}

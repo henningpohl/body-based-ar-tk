@@ -1,0 +1,28 @@
+DROP TABLE IF EXISTS projects;
+DROP TABLE IF EXISTS content;
+DROP TABLE IF EXISTS blocks;
+
+-- Store projects
+CREATE TABLE projects (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  deleted BOOLEAN NOT NULL DEFAULT 0
+);
+
+-- Stores content of a project, endpoints and connections
+CREATE TABLE content (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  project_id INTEGER NOT NULL,
+  time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  data BLOB NOT NULL,
+  FOREIGN KEY (project_id) REFERENCES projects (id)
+);
+
+-- Stores user created blocks
+CREATE TABLE blocks (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  data BLOB NOT NULL
+);

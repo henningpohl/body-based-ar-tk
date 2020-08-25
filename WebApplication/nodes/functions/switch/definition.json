@@ -1,0 +1,43 @@
+{
+	"id": "switch", 
+	"name": "switch", 
+	"endpoints": [
+		{
+      "id": "input",
+      "name": "expression",
+      "scope": "primitive",
+      "type": "primitive",
+			"direction": "in",
+			"help": true
+		},
+		{
+			"id": "case",
+      "name": "case",
+      "scope": "any",
+      "type": "any",
+			"direction": "in",
+			"field": {
+				"type": "text",
+				"label": "case"
+			}
+		},
+		{
+      "id": "add-in",
+      "name": "add case",
+      "scope": "",
+      "type": "add",
+      "direction": "",
+      "field": {
+        "type": "add",
+        "copy": "case"
+      }
+		},
+		{
+      "id": "output",
+      "name": "output",
+      "scope": "any",
+      "type": "any",
+      "direction": "out"
+		}
+	]
+}

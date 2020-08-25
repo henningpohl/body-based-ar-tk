@@ -1,0 +1,27 @@
+{
+	"endpoints": [
+	  {
+			"direction": "in",
+			"id": "interval",
+			"name": "interval (seconds)",
+			"scope": "number",
+			"type": "number"
+		},
+		{
+			"direction": "in",
+			"id": "active",
+			"name": "active (optional)",
+			"scope": "boolean",
+			"type": "boolean"
+		},
+	  {
+			"direction": "out",
+			"id": "trigger",
+			"name": "trigger",
+			"scope": "boolean",
+			"type": "boolean"
+		}
+	],
+	"id": "timer",
+	"name": "timer"
+}

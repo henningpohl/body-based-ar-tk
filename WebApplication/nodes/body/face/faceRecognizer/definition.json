@@ -1,0 +1,29 @@
+{
+	"endpoints": [
+		{
+			"direction": "in",
+			"id": "in_face",
+			"name": "face",
+			"scope": "face",
+			"type": "face"
+		},
+		{
+			"direction": "",
+			"field": {
+				"type": "collection"
+			},
+			"id": "known_faces",
+			"name": "known faces",
+			"scope": ""
+		},
+		{
+			"direction": "out",
+			"id": "out_face",
+			"name": "face with name",
+			"scope": "face",
+			"type": "face"
+		}
+	],
+	"id": "faceRecognizer",
+	"name": "face recognizer"
+}

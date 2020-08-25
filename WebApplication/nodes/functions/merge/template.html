@@ -1,0 +1,20 @@
+<script type="text/x-handlebars-template" id="mergeInputTemplate">
+  {{name}}
+</script>
+
+<script>
+  Handlebars.registerPartial('merge', $('#mergeInputTemplate').html())
+</script>
+
+
+<script type="text/x-handlebars-template" id="deleteableMergeInputTemplate">
+  {{name}}
+  <button class="btn btn-secondary btn-sm delete-input mergeable" type="button">
+    <i class="material-icons md-14" style="margin-top: -5px;">close</i>
+  </button>
+</script>
+
+<script>
+  Handlebars.registerPartial('deleteable-merge', $('#deleteableMergeInputTemplate').html())
+</script>
+  

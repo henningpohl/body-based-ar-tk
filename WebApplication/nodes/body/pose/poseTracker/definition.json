@@ -1,0 +1,13 @@
+{
+	"endpoints": [
+		{
+			"direction": "out",
+			"id": "pose",
+			"name": "pose",
+			"scope": "pose poses",
+			"type": "pose"
+		}
+	],
+	"id": "poseTracker",
+	"name": "pose tracker"
+}

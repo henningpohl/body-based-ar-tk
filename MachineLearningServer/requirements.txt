@@ -1,0 +1,9 @@
+keras==2.2.5
+https://storage.googleapis.com/tensorflow/windows/cpu/tensorflow_cpu-1.15.0-cp37-cp37m-win_amd64.whl
+cmake
+face_recognition
+opencv-python
+-f https://download.pytorch.org/whl/torch_stable.html
+torch==1.6.0+cpu
+-f https://download.pytorch.org/whl/torch_stable.html
+torchvision==0.7.0+cpu

@@ -1,0 +1,28 @@
+{
+  "id": "number",
+  "name": "number",
+  "endpoints": [
+    {
+      "id": "number",
+      "name": "number",
+      "scope": "number numbers",
+      "type": "number",
+      "direction": "out",
+      "field": {
+        "type": "number",
+        "placeholder": "Number"
+      }
+    },
+    {
+      "id": "index",
+      "name": "add number",
+      "scope": "",
+      "type": "index",
+      "direction": "",
+      "field": {
+        "type": "index",
+        "copy": "number"
+      }
+    }
+  ]
+}

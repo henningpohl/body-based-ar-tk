@@ -1,0 +1,21 @@
+.btn-colorpicker:not(:first-child) {
+  margin-top: 5px;
+}
+
+.window.color {
+  z-index: 27 !important;
+}
+
+.endpoint-type-color {
+  z-index: 29 !important;
+}
+
+.color .btn {
+  /* border: 1px solid #aaa !important; */
+  font-size: 0.8em;
+}
+
+.color .btn-group {
+  margin-top: 5px;
+  width: 100%;
+}

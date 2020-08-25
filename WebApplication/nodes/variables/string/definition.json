@@ -1,0 +1,28 @@
+{
+	"endpoints": [
+		{
+			"direction": "out",
+			"field": {
+				"placeholder": "String",
+				"type": "text"
+			},
+			"id": "string",
+			"name": "string",
+			"scope": "string strings",
+			"type": "string"
+		},
+		{
+			"direction": "",
+			"field": {
+				"copy": "string",
+				"type": "index"
+			},
+			"id": "index",
+			"name": "add string",
+			"scope": "",
+			"type": "index"
+		}
+	],
+	"id": "string",
+	"name": "string"
+}

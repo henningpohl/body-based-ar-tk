@@ -1,0 +1,62 @@
+{
+  "id": "script",
+  "name": "script",
+  "endpoints": [
+    {
+      "id": "input",
+      "name": "input",
+      "scope": "any",
+      "type": "any",
+      "direction": "in",
+      "field": {
+        "type": "text",
+        "placeholder": "variable name",
+        "label": "input variable name"
+      }
+    },
+    {
+      "id": "add-in",
+      "name": "add input",
+      "scope": "",
+      "type": "add",
+      "direction": "",
+      "field": {
+        "type": "add",
+        "copy": "input"
+      }
+    },
+    {
+      "id": "setup",
+      "name": "setup function",
+      "scope": "",
+      "type": "editor",
+      "direction": "",
+      "field": {
+        "type": "editor",
+        "values": {
+          "setup": "// check for available input with this.hasValue(name);\r// get input value with this.getValue(name);\r// set output with this.setOutput(value);"
+        }
+      }
+    },
+    {
+      "id": "loop",
+      "name": "loop function",
+      "scope": "",
+      "type": "editor",
+      "direction": "",
+      "field": {
+        "type": "editor",
+        "values": {
+          "loop": "// check for available input with this.hasValue(name);\r// get input value with this.getValue(name);\r// set output with this.setOutput(value);"
+        }
+      }
+    },
+    {
+      "id": "output",
+      "name": "output",
+      "scope": "any",
+      "type": "any",
+      "direction": "out"
+    }
+  ]
+}

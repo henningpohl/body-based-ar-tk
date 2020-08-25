@@ -1,0 +1,19 @@
+.drop-target {
+  padding: 1rem;
+  box-shadow: inset 0 0 4px #000;
+}
+
+.drop-highlight {
+  box-shadow: 0 0  15px 5px #eee;
+}
+
+:focus {
+  outline: none;
+}
+
+img.image-upload {
+  max-height: 100px;
+  width: auto;
+  margin-bottom: 15px;
+  margin-top: -15px;
+}

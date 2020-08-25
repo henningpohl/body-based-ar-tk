@@ -1,0 +1,27 @@
+{
+  "id": "and",
+  "name": "and",
+  "endpoints": [
+    {
+      "id": "inputA",
+      "name": "input one",
+      "scope": "boolean",
+      "type": "boolean",
+      "direction": "in"
+    },
+    {
+      "id": "inputB",
+      "name": "input two",
+      "scope": "boolean",
+      "type": "boolean",
+      "direction": "in"
+    },
+    {
+      "id": "output",
+      "name": "output",
+      "scope": "boolean",
+      "type": "boolean",
+      "direction": "out"
+    }
+  ]
+}

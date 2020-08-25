@@ -1,0 +1,22 @@
+<script type="text/x-handlebars-template" id="random-endpoint-layout">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist" data-value="{{lookup values 'type'}}">
+    {{#each endpoints}}
+    <li class="nav-item">
+      <a class="nav-link" data-type="{{type}}" data-toggle="tab" href="#tab-{{../id}}-{{id}}" id="a-{{../id}}-{{id}}">{{name}}</a>
+    </li>
+    {{/each}}
+  </ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    {{#each endpoints}}
+    <div id="tab-{{../id}}-{{id}}" class="tab-pane">
+      {{> genericEndpoint parentId=../id}}
+    </div>
+    {{/each}}
+  </div>
+    
+</script>
+<script>
+  Handlebars.registerPartial('randomEndpoint', $('#random-endpoint-layout').html())
+</script>

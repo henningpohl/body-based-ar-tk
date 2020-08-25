@@ -1,0 +1,175 @@
+{% raw %}
+<script type="text/x-handlebars-template" id="nodeTemplate">
+<div class="window card text-center {{type}}" data-type="{{type}}" id="{{id}}" style="left:{{x}}px; top:{{y}}px;">
+
+  <div class="card-header">
+    {{name}} <i class="material-icons md-24 pull-right delete-node" data-html2canvas-ignore="true">cancel</i>
+  </div>
+
+  <div class="list-group">
+    {{#ifCond type '==' 'random'}}
+    {{> randomEndpoint}}
+    {{else}}
+      {{#each endpoints}}
+        {{> genericEndpoint parentId=../id}}
+      {{/each}}
+    {{/ifCond}}
+  </div>
+</div>
+</script>
+
+<script type="text/x-handlebars-template" id="generic-endpoint-layout">
+<div class="col-md-12 list-group-item justify-content-between align-items-center d-flex">
+  {{#strContains direction 'in'}}
+  <i data-scope="{{scope}}" data-type="{{type}}" data-maxconnections="{{#if maxconnections}}{{maxconnections}}{{else}}1{{/if}}" data-eid="{{id}}" id="{{randStr}}" class="nin in-{{parentId}}-{{id}}"></i>
+  <span class="col-md-3 text-left endpoint-type in {{type}}">{{type}}</span>
+  {{/strContains}}
+    {{#if field}}
+      <!-- endpoint with a field -->
+      {{#strContains direction 'in out'}}
+        <span class="col-md-6 endpoint-field" data-eid="{{id}}">
+          {{dynamic field.type this}}
+        </span>
+      {{else ifCond direction '==' ''}}
+        <span class="col-md-12 endpoint-field text-center" data-eid="{{id}}">
+          {{dynamic field.type this}}
+        </span>
+      {{else}}
+        <span class="col-md-9 endpoint-field" data-eid="{{id}}">
+          {{dynamic field.type this}}
+        </span>
+      {{/strContains}}
+    {{else if deleteable }}
+      <!-- deleteable generic endpoint -->
+      {{#strContains direction 'out'}}
+        <span class="col-md-9 endpoint-field text-left" data-eid="{{id}}">
+          {{name}}
+          <button class="btn btn-secondary btn-sm delete-input mergeable" type="button">
+            <i class="material-icons md-14" style="margin-top: -5px;">close</i>
+          </button>
+        </span>
+      {{else strContains direction 'in'}}
+        <span class="col-md-9 endpoint-field text-right" data-eid="{{id}}">
+          {{name}}
+          <button class="btn btn-secondary btn-sm delete-input mergeable" type="button">
+            <i class="material-icons md-14" style="margin-top: -5px;">close</i>
+          </button>
+        </span>
+      {{else}}
+        <span class="col-md-12 endpoint-field text-center"data-eid="{{id}}">
+          {{name}}
+          <button class="btn btn-secondary btn-sm delete-input mergeable" type="button">
+            <i class="material-icons md-14" style="margin-top: -5px;">close</i>
+          </button>
+        </span>
+      {{/strContains}}
+    {{else}}
+      <!-- generic endpoint -->
+      {{#strContains direction 'out'}}
+        <span class="col-md-9 endpoint-field text-left" data-eid="{{id}}">
+          {{name}}
+          {{#if help}}
+            <i class="material-icons pull-right help" style="margin: 0em;">help_outline</i>
+          {{/if}}
+        </span>
+      {{else strContains direction 'in'}}
+        <span class="col-md-9 endpoint-field text-right" data-eid="{{id}}">
+          {{name}}
+          {{#if help}}
+           <i class="material-icons pull-right help" style="margin: 0em;">help_outline</i>
+          {{/if}}
+        </span>
+      {{else}}
+        <span class="col-md-12 endpoint-field text-center"data-eid="{{id}}">
+          {{name}}
+          {{#if help}}
+            <i class="material-icons pull-right help" style="margin: 0em;">help_outline</i>
+          {{/if}}
+        </span>
+      {{/strContains}}
+    {{/if}}
+  {{#strContains direction 'out'}}
+  <span class="col-md-3 text-right endpoint-type out {{type}}">{{type}}</span>
+  <i data-scope="{{scope}}" data-type="{{type}}" data-eid="{{id}}" data-maxconnections="{{#if maxconnections}}{{maxconnections}}{{else}}1{{/if}}" id="{{randStr}}" class="nout out-{{parentId}}-{{id}}" style="width: 5%"></i>
+  {{/strContains}}
+</div>
+</script>
+
+<script>
+Handlebars.registerPartial('genericEndpoint', $('#generic-endpoint-layout').html())
+</script>
+
+<script type="text/x-handlebars-template" id="deleteableGenericEndpointTemplate">
+  {{> genericEndpoint deleteable=true}}
+</script>
+
+<script>
+  Handlebars.registerPartial('deleteable-genericEndpoint', $('#deleteableGenericEndpointTemplate').html())
+</script>
+  
+
+<!-- SELECT -->
+<script type="text/x-handlebars-template" id="selectInputTemplate">
+  {{#if field.label}}<label>{{field.label}}</label>{{/if}}
+  <select data-eid="{{id}}" data-type="{{type}}" data-value="{{lookup field.values id}}" id="select-{{parentId}}-{{id}}">
+    {{#if (lookup field.values id)}}{{else}}
+    <option value="" disabled selected>choose...</option>
+    {{/if}}
+    {{#each field.options}}
+      <option value="{{@key}}" {{#ifCond @key "==" (lookup ../field.values ../id) }} selected {{/ifCond}}>{{this}}</option>
+    {{/each}}
+  </select>
+</script>
+
+<script>
+  Handlebars.registerPartial('select', $('#selectInputTemplate').html())
+</script>
+
+<script type="text/x-handlebars-template" id="addInputTemplate">
+  <div class="row build-array" data-copy="{{field.copy}}" id="{{parentId}}-{{id}}">
+    <div class="col-md-6 text-right">
+      <i class="material-icons">add_circle</i>
+    </div>
+    <div class="col-md-6 text-left">
+      {{name}}
+    </div>
+  </div>
+</script>
+
+<script>
+  Handlebars.registerPartial('add', $('#addInputTemplate').html())
+</script>
+
+<script type="text/x-handlebars-template" id="indexInputTemplate">
+  <div class="row build-array" data-copy="{{field.copy}}" id="{{parentId}}-{{id}}">
+    <div class="col-md-4 text-right">
+      <i class="material-icons">add_circle</i>
+    </div>
+    <div class="col-md-8 text-left">
+      {{name}}
+    </div>
+  </div>
+</script>
+
+<script>
+  Handlebars.registerPartial('index', $('#indexInputTemplate').html())
+</script>
+
+<script type="text/x-handlebars-template" id="opInputTemplate">
+  <label><i>connect the input</i></label>
+</script>
+<script>
+  Handlebars.registerPartial('op', $('#opInputTemplate').html())
+</script>
+
+<script type="text/x-handlebars-template" id="selectOpInputTemplate">
+  <div class="condition-inputs">
+    <label>operator</label>
+    {{dynamic 'select' this }}
+  </div>
+</script>
+<script>
+  Handlebars.registerPartial('selectOp', $('#selectOpInputTemplate').html())
+</script>
+
+{% endraw %}

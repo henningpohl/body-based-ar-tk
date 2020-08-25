@@ -1,0 +1,35 @@
+{
+  "id": "poseDetection",
+  "name": "pose detection",
+  "endpoints": [
+    {
+      "id": "input",
+      "name": "input",
+      "scope": "pose poses",
+      "type": "pose",
+      "direction": "in"
+    },
+    {
+      "id": "pose",
+      "name": "pose",
+      "scope": "pose poses",
+      "type": "pose",
+      "direction": "",
+      "field": {
+        "type": "select",
+        "options": {
+          "hand_raised": "hand raised",
+          "hand_not_raised": "hand not raised",
+          "sitting": "sitting"
+        }
+      }
+    },
+    {
+      "id": "output",
+      "name": "output",
+      "scope": "pose poses",
+      "type": "pose",
+      "direction": "out"
+    }
+  ]
+}

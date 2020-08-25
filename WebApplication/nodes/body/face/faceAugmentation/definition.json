@@ -1,0 +1,34 @@
+{
+	"endpoints": [
+		{
+			"direction": "in",
+			"id": "face",
+			"name": "Face",
+			"scope": "face",
+			"type": "face"
+		},
+		{
+			"direction": "in",
+			"id": "lip_color",
+			"name": "Lip Color",
+			"scope": "color",
+			"type": "color"
+		},
+		{
+			"direction": "in",
+			"id": "eye_shade",
+			"name": "Eye Shade",
+			"scope": "color",
+			"type": "color"
+		},
+		{
+			"direction": "in",
+			"id": "blushing",
+			"name": "Blushing",
+			"scope": "number",
+			"type": "number"
+		}
+	],
+	"id": "faceAugmentation",
+	"name": "face augmentation"
+}

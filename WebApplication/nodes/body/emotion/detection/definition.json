@@ -1,0 +1,27 @@
+{
+	"endpoints": [
+		{
+			"direction": "in",
+			"id": "face",
+			"name": "face",
+			"scope": "face",
+			"type": "face"
+		},
+		{
+			"direction": "in",
+			"id": "pose",
+			"name": "pose",
+			"scope": "pose",
+			"type": "pose"
+		},
+		{
+			"direction": "out",
+			"id": "output",
+			"name": "emotion",
+			"scope": "emotion",
+			"type": "emotion"
+		}
+	],
+	"id": "emotion",
+	"name": "emotion detection"
+}

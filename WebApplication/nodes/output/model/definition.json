@@ -1,0 +1,52 @@
+{
+	"endpoints": [
+		{
+			"direction": "in",
+			"id": "position",
+			"name": "position",
+			"scope": "position",
+			"type": "position"
+		},
+		{
+			"direction": "in",
+			"id": "color",
+			"name": "color",
+			"scope": "color",
+			"type": "color"
+		},
+		{
+			"direction": "in",
+			"help": true,
+			"id": "orientation",
+			"name": "orientation (optional)",
+			"scope": "position",
+			"type": "position"
+		},
+		{
+			"direction": "in",
+			"id": "scale",
+			"name": "scale (optional)",
+			"scope": "number",
+			"type": "number"
+		},
+		{
+			"direction": "in",
+			"id": "show",
+			"name": "show (optional)",
+			"scope": "boolean",
+			"type": "boolean"
+		},
+		{
+			"direction": "",
+			"field": {
+				"type": "model"
+			},
+			"id": "model",
+			"name": "model",
+			"scope": "",
+			"type": ""
+		}
+	],
+	"id": "model",
+	"name": "3D Model"
+}

@@ -1,0 +1,74 @@
+<!-- COLLECTION -->
+<script type="text/x-handlebars-template" id="collectionInputTemplate">
+  {{#if field.label}}<label>{{field.label}}</label>{{/if}}
+  <button type="button" class="btn btn-light btn-sm btn-block text-center" style="margin-top: -1px;" data-toggle="modal" data-target="#{{parentId}}-collectionModal">
+    edit known faces
+  </button>
+</script>
+
+<script>
+  Handlebars.registerPartial('collection', $('#collectionInputTemplate').html())
+</script>
+
+<script type="text/x-handlebars-template" id="collectionModalTemplate">
+  <div class="modal fade" id="{{parentId}}-collectionModal" data-eid="{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content known-faces">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Known faces</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <i class="material-icons">cancel</i>
+          </button>
+        </div>
+        <div class="modal-body row">
+          <div class="face-images row">
+            {{#each field.values.known_faces}}
+              {{dynamic 'collection-known_face' this}}
+            {{/each}}
+          </div>
+          <div class="card">
+            <p>
+              <div class="upload-btn-wrapper text-center">
+                <button class="btn btn-default text-success"><i class="text-xl material-icons"  title="Click the icon or drag files here to add images">add_circle</i></button>
+                <input type="file" data-eid="{{id}}" multiple accept="image/png, image/jpeg" title="Click the icon or drag files here to add images"/>
+              </div>
+            </p>
+            <div class="card-body">
+              <p class="card-text">
+                <input class="form-control form-control-sm" type="text" placeholder="Identifier">
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+          <button type="button" class="btn btn-primary" onclick="saveScene();$('#{{parentId}}-collectionModal').modal('toggle')">save & close</button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+  
+  
+<script>
+  Handlebars.registerPartial('collection-modal', $('#collectionModalTemplate').html())
+</script>
+
+<script type="text/x-handlebars-template" id="knownFaceTemplate">
+<div class="card" id="{{id}}">
+  <i class="material-icons text-danger delete-known-face">cancel</i>
+  <div class="card-body">
+    <div class="image-wrapper">
+      <img src="{{src}}" class="card-img-top">
+    </div>
+    <p class="card-text">
+      <label>name</label>
+      <input class="form-control form-control-sm" type="text" data-type="caption" value="{{caption}}" placeholder="Identifier">
+    </p>
+  </div>
+</div>
+</script>
+<script>
+  Handlebars.registerPartial('collection-known_face', $('#knownFaceTemplate').html())
+</script>

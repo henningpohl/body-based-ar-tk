@@ -1,0 +1,20 @@
+{
+	"endpoints": [
+	  {
+			"direction": "in",
+			"id": "meters",
+			"name": "meters",
+			"scope": "number",
+			"type": "number"
+		},
+		{
+			"direction": "out",
+			"id": "position",
+			"name": "position",
+			"scope": "position",
+			"type": "position"
+		}
+	],
+	"id": "ahead",
+	"name": "ahead"
+}

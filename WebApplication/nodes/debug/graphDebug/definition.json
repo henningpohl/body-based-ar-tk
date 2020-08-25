@@ -1,0 +1,13 @@
+{
+  "id": "graphDebug",
+  "name": "graph debug",
+  "endpoints": [
+    {
+      "id": "dbg",
+      "name": "debug",
+      "scope": "string number color position",
+      "type": "any",
+      "direction": "in"
+    }
+  ]
+}

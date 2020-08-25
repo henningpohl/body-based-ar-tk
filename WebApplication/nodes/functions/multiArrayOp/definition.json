@@ -1,0 +1,55 @@
+{
+  "id": "multiArrayOp",
+  "name": "map & filter",
+  "endpoints": [
+    {
+      "id": "input",
+      "name": "input",
+      "scope": "array",
+      "type": "array",
+      "direction": "in",
+      "help": true
+    },
+    {
+      "id": "op",
+      "name": "operator",
+      "scope": "",
+      "type": "",
+      "direction": "",
+      "field": {
+        "type": "op",
+        "number_options": {
+          "map": "map",
+          "filter": "filter"
+        },
+        "position_options": {
+          "map": "map",
+          "filter": "filter"
+        },
+        "string_options": {
+          "map": "map",
+          "filter": "filter"
+        },
+        "color_options": {
+          "map": "map",
+          "filter": "filter"
+        },
+        "face_options": {
+          "map": "map",
+          "filter": "filter"
+        },
+        "pose_options": {
+          "map": "map",
+          "filter": "filter"
+        }
+      }
+    },
+    {
+      "id": "output",
+      "name": "output",
+      "scope": "array",
+      "type": "array",
+      "direction": "out"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "block_simple_label": {
+    "id": "block_simple_label",
+    "name": "simple label",
+    "data": {
+      "connections": [
+        { "source": "position-position", "target": "label-position"},
+        { "source": "color-color", "target": "label-color"},
+        { "source": "string-string", "target": "label-string"},
+        { "source": "true-output", "target": "label-show"}
+      ],
+      "block": [
+        { "oid": "label", "type": "label", "x": 700, "y": 300 },
+        { "oid": "position", "type": "position", "x": 200, "y": 300 },
+        { "oid": "color", "type": "color", "x": 200, "y": 500 },
+        { "oid": "string", "type": "string", "x": 200, "y": 150 },
+        { "oid": "true", "type": "true", "x": 200, "y": 650 }
+      ]
+    }
+  },
+  "block_label_to_face_if_name_hans": {
+    "id": "block_label_to_face_if_name_hans",
+    "name": "label to face",
+    "data": {
+      "block": [
+        { "oid":"faceRecognizer", "type":"faceRecognizer", "x":500, "y":321},
+        { "oid":"faceTracker", "type":"faceTracker", "x":201, "y":537},
+        { "oid":"compare", "type":"compare", "x":800, "y":100, "values":{ "op":"eq"}},
+        { "oid":"string", "type":"string", "x":500, "y":100, "values":{ "string":["Hans"]}},
+        { "oid":"label", "type":"label", "x":1200, "y":321},
+        { "oid":"color", "type":"color", "x":800, "y":714},
+        { "oid":"offsetPosition", "type":"offsetPosition", "x":511, "y":532, "values":{ "offset":"right"}}
+      ],
+      "connections":[
+        {"source":"faceTracker-face","target":"faceRecognizer-tracked_face"},
+        {"source":"color-color","target":"label-color"},
+        {"source":"faceRecognizer-name","target":"label-string"},
+        {"source":"faceTracker-position","target":"offsetPosition-input"},
+        {"source":"offsetPosition-output","target":"label-position"},
+        {"source":"compare-result","target":"label-show"},
+        {"source":"string-string","target":"compare-inputA"},
+        {"source":"faceRecognizer-name","target":"compare-inputB"}
+      ]
+    }
+  },
+  "block_bargraph_number_of_raised_hands": {
+    "id": "block_bargraph_number_of_raised_hands",
+    "name": "display raised hands",
+    "data": {
+      "block":[
+        { "oid":"poseDetection", "type":"poseDetection", "x":515, "y":100, "values":{ "pose":"hand_raised"}},
+        { "oid":"poseDetection_1", "type":"poseDetection", "x":515, "y":260, "values":{ "pose":"hand_not_raised"}},
+        { "oid":"poseTracker", "type":"poseTracker", "x":200, "y":100 },
+        { "oid":"singleArrayOp", "type":"singleArrayOp", "x":879, "y":200, "values":{ "op":"count"}},
+        { "oid":"singleArrayOp_1", "type":"singleArrayOp", "x":879, "y":400, "values":{ "op":"count"}},
+        { "oid":"bargraph", "type":"bargraph", "x":1588, "y":480},
+        { "oid":"string", "type":"string", "x":1200, "y":200, "values":{ "string":["#hands raised","#hands not raised"]}},
+        { "oid":"myself", "type":"myself", "x":879, "y":815},
+        { "oid":"offsetPosition", "type":"offsetPosition", "x":1200, "y":815, "values":{ "offset":"front"}},
+        { "oid":"color", "type":"color", "x":1200, "y":620, "values":{ "color":["#3b8a10ff","#dd2a09ff"]}},
+        { "oid":"merge", "type":"merge", "x":1200, "y":400, "values": {"input": ["", ""]}}
+      ],
+      "connections":[
+        { "source":"string-string", "target":"bargraph-string"},
+        { "source":"poseTracker-pose", "target":"poseDetection-input"},
+        { "source":"poseTracker-pose", "target":"poseDetection_1-input"},
+        { "source":"poseDetection-output", "target":"singleArrayOp-input"},
+        { "source":"poseDetection_1-output", "target":"singleArrayOp_1-input"},
+        { "source":"color-color", "target":"bargraph-color"},
+        { "source":"offsetPosition-output", "target":"bargraph-position"},
+        { "source":"myself-position", "target":"offsetPosition-input"},
+        { "source":"singleArrayOp-output", "target":"merge-input"},
+        { "source":"singleArrayOp_1-output", "target":"merge-input_1"},
+        { "source":"merge-output", "target":"bargraph-number"}
+      ]
+    }
+  }
+}

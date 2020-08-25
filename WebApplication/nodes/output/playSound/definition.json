@@ -1,0 +1,29 @@
+{
+	"endpoints": [
+		{
+			"direction": "in",
+			"id": "trigger",
+			"name": "trigger",
+			"scope": "boolean",
+			"type": "boolean"
+		},
+		{
+			"direction": "in",
+			"id": "position",
+			"name": "position (optional)",
+			"scope": "position",
+			"type": "position"
+		},
+		{
+			"direction": "",
+			"field": {
+				"type": "soundFile"
+			},
+			"id": "sound_file",
+			"name": "sound",
+			"scope": ""
+		}
+	],
+	"id": "playSound",
+	"name": "playSound"
+}

@@ -1,0 +1,168 @@
+.face-images.row {
+  margin: 0;
+  width: 100%;
+}
+
+.modal label {
+  font-size: 0.8em;
+  margin-bottom: 0px;
+  float: left;
+}
+
+.known-faces .card {
+  max-width: 150px;
+  /* height: 100%; */
+}
+
+.known-faces .card:not(:last-child) {
+  border-right: 1px solid #aaa;
+  padding-right: 15px;
+}
+
+.delete-known-face {
+  position: absolute;
+  right: 5px;
+  cursor: pointer;
+}
+
+.known-faces img {
+  margin-bottom: 15px;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.known-faces .image-wrapper {
+  height: 150px;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.upload-btn-wrapper input[type=file] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+
+.face-image {
+  max-width: 135px;
+  max-height: 150px;
+}
+.face-images.row {
+  margin: 0;
+  width: 100%;
+}
+
+.modal label {
+  font-size: 0.8em;
+  margin-bottom: 0px;
+  float: left;
+}
+
+.known-faces .card {
+  max-width: 150px;
+  /* height: 100%; */
+}
+
+.known-faces .card:not(:last-child) {
+  border-right: 1px solid #aaa;
+  padding-right: 15px;
+}
+
+.delete-known-face {
+  position: absolute;
+  right: 5px;
+  cursor: pointer;
+}
+
+.known-faces img {
+  margin-bottom: 15px;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.known-faces .image-wrapper {
+  height: 150px;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.upload-btn-wrapper input[type=file] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+
+.face-image {
+  max-width: 135px;
+  max-height: 150px;
+}
+.face-images.row {
+  margin: 0;
+  width: 100%;
+}
+
+.modal label {
+  font-size: 0.8em;
+  margin-bottom: 0px;
+  float: left;
+}
+
+.known-faces .card {
+  max-width: 150px;
+  /* height: 100%; */
+}
+
+.known-faces .card:not(:last-child) {
+  border-right: 1px solid #aaa;
+  padding-right: 15px;
+}
+
+.delete-known-face {
+  position: absolute;
+  right: 5px;
+  cursor: pointer;
+}
+
+.known-faces img {
+  margin-bottom: 15px;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.known-faces .image-wrapper {
+  height: 150px;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.upload-btn-wrapper input[type=file] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+
+.face-image {
+  max-width: 135px;
+  max-height: 150px;
+}

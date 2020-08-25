@@ -1,0 +1,34 @@
+{
+  "id": "conditional",
+  "name": "if-then-else",
+  "endpoints": [
+    {
+      "id": "input",
+      "name": "if",
+      "scope": "boolean",
+      "type": "boolean",
+      "direction": "in"
+    },
+    {
+      "id": "onif",
+      "name": "then",
+      "scope": "any",
+      "type": "any",
+      "direction": "in"
+    },
+    {
+      "id": "onelse",
+      "name": "else",
+      "scope": "any",
+      "type": "any",
+      "direction": "in"
+    },
+    {
+      "id": "output",
+      "name": "output",
+      "scope": "any",
+      "type": "any",
+      "direction": "out"
+    }
+  ]
+}

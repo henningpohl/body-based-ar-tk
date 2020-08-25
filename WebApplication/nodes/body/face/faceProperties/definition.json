@@ -1,0 +1,27 @@
+{
+	"endpoints": [
+		{
+			"direction": "in",
+			"id": "input",
+			"name": "input",
+			"scope": "face",
+			"type": "face"
+		},
+		{
+			"direction": "out",
+			"id": "position",
+			"name": "position",
+			"scope": "position",
+			"type": "position"
+		},
+		{
+			"direction": "out",
+			"id": "name",
+			"name": "name",
+			"scope": "string",
+			"type": "string"
+		}
+	],
+	"id": "faceProperties",
+	"name": "face properties"
+}

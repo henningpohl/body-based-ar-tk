@@ -1,0 +1,145 @@
+<!-- EDITOR -->
+<script type="text/x-handlebars-template" id="EditorInputTemplate">
+  <div class="row toggle-editor">
+    <div class="col-md-12">
+      <label>
+        <i class="material-icons">code</i>
+        {{name}}
+      </label>
+      <i class="material-icons pull-right" onclick="script_editor_help();" style="margin: 0em;">help_outline</i>
+    </div>
+    <!-- <div class="col-md-2">
+      <i class="material-icons">expand_more</i>
+    </div> -->
+  </div>
+  <div class="row">
+    <div class="col-md-12" style="height: 150px">
+      <div id="{{type}}-editor-{{parentId}}-{{id}}" data-eid="{{id}}" class="editor" style="height: 150px;">{{~lookup field.values id ~}}</div>
+    </div>
+  </div>
+</script>
+
+<script>
+  Handlebars.registerPartial('editor', $('#EditorInputTemplate').html())
+
+  function script_editor_help() {
+    types = [
+      { type: "number" , description: `
+          <span><b>type</b></span>
+          <pre>float</pre>
+        `
+      },
+      { type: "string" , description: `
+          <span><b>type</b></span>
+          <pre>string</pre>
+        ` 
+      },
+      { type: "color" , description: `
+          <span><b>type</b></span>
+          <pre>Color</pre>
+          <span><b>methods</b></span>
+          <pre>> a.brightness</pre>
+          <span>returns the summed <a href="https://en.wikipedia.org/wiki/Rec._709#Luma_coefficients" target="_blank">Luma coefficients</a> of the color, a value between 0 and 255.</span>
+          <pre>> a.toString()</pre>
+          <span>returns the color as a hex triplet (eg. <tt>#ffffff</tt>)</span>
+          <pre>> a.brighter(b)</pre>
+          <pre>> a.darker(b)</pre>
+          <span>returns a boolean.</span>
+        `
+      },
+      { type: "position" , description: `
+          <span><b>type</b></span>
+          <pre>Position</pre>
+          <span><b>methods</b></span>
+          <pre>> a.x, a.y, a.z</pre>
+          <span>the positions coordinates</span>
+          <pre>> a.distance(b)</pre>
+          <span>returns the distance between the positions <tt>p</tt> and <tt>o</tt></span>
+          <pre>> a.toString()</pre>
+          <span>returns the position as a comma-seperated string</span>
+          <pre>> a.closer(b, t = 0)</pre>
+          <pre>> a.further(b, t = 0)</pre>
+          <pre>> a.lower(b, t = 0)</pre>
+          <pre>> a.higher(b, t = 0)</pre>
+          <pre>> a.left(b, t = 0)</pre>
+          <pre>> a.right(b, t = 0)</pre>
+          <span>returns a boolean, <tt>t</tt> is a threshold, which means that "<tt>a</tt> needs to be at least <tt>t</tt> higher than <tt>b</tt>". The results are relative to the origin.</span>
+        `
+      },
+      { type: "face" , description: `
+          <span><b>type</b></span>
+          <pre>Face</pre>
+          <span><b>methods</b></span>
+          <pre>> a.position</pre>
+          <span>the <tt>Position</tt> of the face</span>
+          <pre>> a.faceRef</pre>
+          <span>a unique face identifier</span>
+        ` 
+      },
+      { type: "pose" , description: `
+          <span><b>type</b></span>
+          <pre>Pose</pre>
+          <span><b>methods</b></span>
+          <pre>> a.poseRef</pre>
+          <span>a unique pose identifier</span>
+          <pre>> a.keypoints</pre>
+          <span>list of keypoint objects, of the format:</span>
+          <pre>
+  {
+      keypoint: string,
+      score: float,
+      position: Position
+  }</pre>
+          <span>where keypoint is one of <tt>nose</tt>, <tt>leftEye</tt>, <tt>rightEye</tt>, <tt>leftEar</tt>, <tt>rightEar</tt>, <tt>leftShoulder</tt>, <tt>rightShoulder</tt>, <tt>leftElbow</tt>, <tt>rightElbow</tt>, <tt>leftWrist</tt>, <tt>rightWrist</tt>, <tt>leftHip</tt>, <tt>rightHip</tt>, <tt>leftKnee</tt>, <tt>rightKnee</tt>, <tt>leftAnkle</tt>, <tt>rightAnkle</tt>.</span>
+          <pre>> a.getKeypoint(keypoint)</pre>
+          <span>get a specific keypoint or <tt>null</tt> if not exists.</span>
+        ` 
+      },
+    ]
+
+    table = '<table class="table" style="color:inherit;">' +
+      // '<thead><tr><th width="20%"><i>type</i></th><th width="80%"><i>description</i></th></tr></thead>' +
+      '<tbody>';
+    for (var k in types) {
+      v = types[k]
+      table += 
+        '<tr>' +
+          '<td width="20%">' + v['type'] + '</td>' +
+          '<td width="80%">' + v['description'] + '</td>' +
+        '</tr>';
+    }
+    table += '</tbody></table>';
+
+    $.confirm({
+      animation: 'none',
+      title: 'Script help',
+      backgroundDismiss: true,
+      columnClass: 'col-md-10',
+      content: `
+        <h6><b>General usage</b></h6>
+          <div style="font-size: 1.1em;">
+            <span><b>Script node</b></span><br>
+            <span>There are three utility functions in scripts:</span>
+            <pre>
+  > this.hasValue(a)  
+  > this.getValue(a)
+  > this.setOutput(b)</pre>
+            <span>where <tt>a</tt> is a variable name, and <tt>b</tt> is the output of the script</span>
+            <br><br>
+            <span><b>Map & Filter node</b></span><br>
+            <span>There are two utility functions in scripts:</span>
+            <pre>
+  > this.getValue(a)
+  > this.setOutput(b)</pre>
+            <span>where <tt>a</tt> is a variable name, and <tt>b</tt> is the output of the script. In the case of filtering, <tt>b</tt> should be a boolean.</span>
+          </div>
+
+        <h6 style="margin-top: 10px"><b>Input types</b></h6>
+        ${table}
+      `,
+      buttons: {
+        ok: () => {}
+      }
+    })
+  }
+</script>

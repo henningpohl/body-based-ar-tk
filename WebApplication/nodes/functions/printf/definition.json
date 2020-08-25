@@ -1,0 +1,42 @@
+{
+	"id": "printf", 
+	"name": "formatted string", 
+	"endpoints": [
+		{
+			"id": "format",
+			"name": "format",
+			"direction": "",
+			"scope": "",
+			"type": "string",
+			"field": {
+				"type": "text",
+				"label": "string format"
+			}
+		},
+		{
+      "id": "input",
+      "name": "argument",
+      "scope": "any",
+      "type": "any",
+			"direction": "in"
+    },
+    {
+      "id": "add-in",
+      "name": "add input",
+      "scope": "",
+      "type": "add",
+      "direction": "",
+      "field": {
+        "type": "add",
+        "copy": "input"
+      }
+    },
+		{
+			"direction": "out",
+			"id": "output",
+			"name": "output",
+			"scope": "string",
+			"type": "string"
+		}
+	]
+}

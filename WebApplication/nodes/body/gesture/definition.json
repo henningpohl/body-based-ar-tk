@@ -1,0 +1,13 @@
+{
+  "id": "gesture",
+  "name": "gesture detection",
+  "endpoints": [
+    {
+      "id": "gesture",
+      "name": "gesture",
+      "scope": "gesture",
+      "type": "gesture",
+      "direction": "out"
+    }
+  ]
+}

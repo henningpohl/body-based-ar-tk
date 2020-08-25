@@ -1,0 +1,50 @@
+{
+  "id": "positionExtraction",
+  "name": "extract pose position",
+  "endpoints": [
+    {
+      "id": "input",
+      "name": "input",
+      "scope": "pose poses",
+      "type": "pose",
+      "direction": "in"
+    },
+    {
+      "id": "keypoint",
+      "name": "keypoint",
+      "scope": "pose poses",
+      "type": "pose",
+      "direction": "",
+      "field": {
+        "label": "point to be tracked",
+        "type": "select",
+        "options": {
+          "nose": "nose",
+          "leftEye": "eye left",
+          "rightEye": "eye right",
+          "leftEar": "ear left",
+          "rightEar": "ear right",
+          "leftShoulder": "shoulder left",
+          "rightShoulder": "shoulder right",
+          "leftElbow": "elbow left",
+          "rightElbow": "elbow right",
+          "leftWrist": "wrist left",
+          "rightWrist": "wrist right",
+          "leftHip": "hip left",
+          "rightHip": "hip right",
+          "leftKnee": "knee left",
+          "rightKnee": "knee right",
+          "leftAnkle": "ankle left",
+          "rightAnkle": "ankle right"
+        }
+      }
+    },
+    {
+      "id": "output",
+      "name": "output",
+      "scope": "position positions",
+      "type": "position",
+      "direction": "out"
+    }
+  ]
+}

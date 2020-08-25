@@ -1,0 +1,86 @@
+{% extends 'base.html'%}
+
+{% block title %}Edit shared file{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/vendor/jquery-confirm.min.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="page-header">
+    <div class="row">
+      <div>
+        <h1 style="margin-top: 15px;">Customizing</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12" style="padding: 0px;">
+      <form id="node-entry" class="row grid">
+        <div class="col-md-10">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{label}}</h5>
+              <p class="card-text">
+                <div id="content-editor" class="node-editor">{{content|e}}</div>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-2 d-flex justify-content-center">
+          <button class="btn btn-primary align-self-center" type="submit" name="action" style="margin-bottom: 15px;">
+            <i class="material-icons right">save</i>
+            save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/vendor/ace/ace.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vendor/jquery-confirm.min.js') }}"></script>
+
+<script>
+
+$(document).ready(function () {
+  var editor = ace.edit("content-editor");
+  editor.getSession().setMode("ace/mode/javascript");
+  editor.setTheme("ace/theme/monokai");
+  editor.getSession().setTabSize(2);
+  editor.getSession().setUseWrapMode(true);
+  editor.clearSelection();
+
+  $('#node-entry').submit((e) => {
+    e.preventDefault();
+    $.ajax({
+      url: "{{url_for('node.save_shared', name=name)}}",
+      method: "POST",
+      data: editor.getValue(),
+      contentType: "text/plain; charset=utf-8",
+      success: (data) => {
+        console.log('success');
+        $.alert({
+          title: 'Saved',
+          content: 'Everything is good',
+        });
+      },
+    })
+  })
+
+  $(document).bind('keydown', function(e) {
+    if(e.ctrlKey && (e.which == 83)) {
+      e.preventDefault();
+      $('#node-entry').trigger('submit');
+      return false;
+    }
+  });
+});
+</script>
+{% endblock %}

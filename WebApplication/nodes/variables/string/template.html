@@ -1,0 +1,25 @@
+<script type="text/x-handlebars-template" id="textInputTemplate">
+  {{#if field.label}}<label>{{field.label}}</label>{{/if}}
+  <input type="text" data-eid="{{id}}" data-type="{{type}}" class="form-control form-control-sm" id="input-{{parentId}}-{{id}}" placeholder="{{field.placeholder}}" value="{{lookup field.values id}}" />
+</script>
+
+<script>
+  Handlebars.registerPartial('text', $('#textInputTemplate').html())
+</script>
+
+
+<script type="text/x-handlebars-template" id="deleteableTextInputTemplate">
+  {{#if field.label}}<label>{{field.label}}</label>{{/if}}
+  <div class="input-group">
+      <input type="text" data-eid="{{id}}" data-type="{{type}}" class="form-control form-control-sm" id="input-{{parentId}}-{{id}}" placeholder="{{field.placeholder}}" value="{{lookup field.values id}}" />
+      <div class="input-group-append">
+        <button class="btn btn-secondary btn-sm delete-input" type="button">
+          <i class="material-icons md-14">close</i>
+        </button>
+      </div>
+    </div>
+</script>
+
+<script>
+  Handlebars.registerPartial('deleteable-text', $('#deleteableTextInputTemplate').html())
+</script>

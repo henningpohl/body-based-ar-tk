@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>Body-AR Testing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <script src="{{ url_for('static', filename='js/vendor/socket.io.js') }}"></script>
+    <script src="/pack/{{pid}}?mock-debug"></script>
+    <pre id="appState"></pre>
+    <script type="text/javascript">
+      function replacer(key, value) {
+        if(key === '_connection') { return; }
+        return value;
+      }
+
+    	console.dir(app);
+
+    	function update() {
+    		app.update();
+    		document.getElementById('appState').innerHTML = JSON.stringify(app, replacer, 2);	
+    	}
+
+      var socket = io.connect('http://localhost:5000/', { transports: ['websocket'] });
+      socket.emit('addDevice', {did: 'kvqi1bcibtaa1dostlgp1e', name: "JS exec", status: 'ready'});
+      socket.on('updatedValue', function(msg) {
+        console.log(msg);
+        app.nodes[msg['nid']].setValue(msg['ntype'], msg['nvalue']);
+        document.getElementById('appState').innerHTML = JSON.stringify(app, replacer, 2);   
+      });
+
+    	document.getElementById('appState').innerHTML = JSON.stringify(app, replacer, 2);	
+    </script>
+    <center>
+    	<button onclick="update();">Run Update</button>
+	</center>
+  </body>
+</html>

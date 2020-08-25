@@ -1,0 +1,13 @@
+{% raw %}
+<script type="text/x-handlebars-template" id="deviceTemplate">
+{{#each devices}}
+	<div class="btn-group dropup">
+		<button type="button" class="btn btn-{{class}}" onclick="runOnDevice('{{@key}}')" >
+			<i class="material-icons {{#if sync}}spin{{/if}}">autorenew</i>
+			run on <b>{{name}}</b> 
+			<p class="small" style="margin: 0px;">{{status}} {{#ifCond status '!=' 'disconnected'}}<i>({{#if sync}}in sync{{else}}click to sync{{/if}})</i>{{/ifCond}}</p>
+		</button>
+	</div>
+{{/each}}
+</script>
+{% endraw %}

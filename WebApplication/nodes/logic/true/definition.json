@@ -1,0 +1,13 @@
+{
+  "id": "true",
+  "name": "true",
+  "endpoints": [
+    {
+      "id": "output",
+      "name": "output",
+      "scope": "boolean",
+      "type": "boolean",
+      "direction": "out"
+    }
+  ]
+}

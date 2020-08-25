@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+
+{% block title %}Create Project{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="page-header">
+    <div class="row">
+      <div>
+        <h1>New Project</h1>
+        <p class="lead">All you need for now is a project name. Don't worry, you can change it later if you want.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <form method="post">
+        <div class="form-group">
+          <label for="name">Project Name</label>  
+          <input name="name" class="form-control" id="name" required>
+        </div>
+        <button class="btn btn-primary float-right" type="submit" name="action">Create
+          <i class="material-icons right">add_circle</i>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

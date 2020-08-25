@@ -1,0 +1,36 @@
+{
+	"endpoints": [
+		{
+			"direction": "in",
+			"id": "input",
+			"name": "position",
+			"scope": "position",
+			"type": "position"
+		},
+		{
+			"direction": "",
+			"field": {
+				"options": {
+				  "above": "Above",
+					"below": "Below",
+					"left": "Left",
+					"right": "Right"
+				},
+				"type": "select"
+			},
+			"id": "offset",
+			"name": "offset",
+			"scope": "",
+			"type": ""
+		},
+		{
+			"direction": "out",
+			"id": "output",
+			"name": "position",
+			"scope": "position",
+			"type": "position"
+		}
+	],
+	"id": "offsetPosition",
+	"name": "offset position"
+}

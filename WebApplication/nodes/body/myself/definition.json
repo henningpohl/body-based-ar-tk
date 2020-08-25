@@ -1,0 +1,34 @@
+{
+	"endpoints": [
+		{
+			"direction": "out",
+			"id": "position",
+			"name": "position",
+			"scope": "position",
+			"type": "position"
+		},
+		{
+			"direction": "out",
+			"id": "forward",
+			"name": "forward",
+			"scope": "position",
+			"type": "position"
+		},
+		{
+			"direction": "out",
+			"id": "up",
+			"name": "up",
+			"scope": "position",
+			"type": "position"
+		},
+		{
+			"direction": "out",
+			"id": "right",
+			"name": "right",
+			"scope": "position",
+			"type": "position"
+		}
+	],
+	"id": "myself",
+	"name": "myself"
+}

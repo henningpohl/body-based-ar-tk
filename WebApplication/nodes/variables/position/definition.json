@@ -1,0 +1,28 @@
+{
+  "id": "position",
+  "name": "position",
+  "endpoints": [
+    {
+      "id": "position",
+      "name": "position",
+      "scope": "position positions",
+      "type": "position",
+      "direction": "out",
+      "field": {
+        "type": "position",
+        "placeholder": "0.0"
+      }
+    },
+    {
+      "id": "index",
+      "name": "add position",
+      "scope": "",
+      "type": "index",
+      "direction": "",
+      "field": {
+        "type": "index",
+        "copy": "position"
+      }
+    }
+  ]
+}

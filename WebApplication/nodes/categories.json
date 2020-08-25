@@ -1,0 +1,191 @@
+[
+  {
+    "name": "Variables",
+    "icon": "input",
+    "items": [
+      {
+        "name": "string"
+      },
+      {
+        "name": "number"
+      },
+      {
+        "name": "position"
+      },
+      {
+        "name": "color"
+      },
+      {
+        "name": "random"
+      },
+      {
+        "name": "timer"
+      },
+      {
+        "name": "image"
+      }
+    ]
+  },
+  {
+    "name": "Body",
+    "icon": "accessibility_new",
+    "items": [
+      {
+        "name": "emotions",
+        "items": [
+          {
+            "name": "emotion"
+          },
+          {
+            "name": "emotionOp"
+          }
+        ]
+      },
+      {
+        "name": "face",
+        "items": [
+          {
+            "name": "faceTracker"
+          },
+          {
+            "name": "faceRecognizer"
+          },
+          {
+            "name": "faceProperties"
+          },
+          {
+            "name": "faceAugmentation"
+          }
+        ]
+      },
+      {
+        "name": "myself"
+      },
+      {
+        "name": "pose",
+        "items": [
+          {
+            "name": "poseTracker"
+          },
+          {
+            "name": "poseDetection"
+          },
+          {
+            "name": "positionExtraction"
+          }
+        ]
+      },
+      {
+        "name": "ahead"
+      }
+    ]
+  },
+  {
+    "name": "Functions",
+    "icon": "functions",
+    "items": [
+      {
+        "name": "compare"
+      },
+      {
+        "name": "distance"
+      },
+      {
+        "name": "merge"
+      },
+      {
+        "name": "singleArrayOp"
+      },
+      {
+        "name": "multiArrayOp"
+      },
+      {
+        "name": "script"
+      },
+      {
+        "name": "offsetPosition"
+      },
+      {
+        "name": "printf"
+      },
+      {
+        "name": "switch"
+      },
+      {
+        "name": "takeFirst"
+      },
+      {
+        "name": "hoverPosition"
+      },
+      {
+        "name": "pushPosition"
+      }
+    ]
+  },
+  {
+    "name": "Logic",
+    "icon": "call_split",
+    "items": [
+      {
+        "name": "true"
+      },
+      {
+        "name": "false"
+      },
+      {
+        "name": "conditional"
+      },
+      {
+        "name": "and"
+      },
+      {
+        "name": "or"
+      },
+      {
+        "name": "not"
+      },
+      {
+        "name": "xor"
+      }
+    ]
+  },
+  {
+    "name": "Debug",
+    "icon": "bug_report",
+    "items": [
+      {
+        "name": "appDebug"
+      },
+      {
+        "name": "graphDebug"
+      }
+    ]
+  },
+  {
+    "name": "Output",
+    "icon": "airplay",
+    "items": [
+      {
+        "name": "label"
+      },
+      {
+        "name": "sprite"
+      },
+      {
+        "name": "path"
+      },
+      {
+        "name": "bargraph"
+      },
+      {
+        "name": "playSound"
+      },
+      {
+        "name": "speakText"
+      },
+      {
+        "name": "model"
+      }
+    ]
+  }
+]

@@ -1,0 +1,13 @@
+.condition-inputs select {
+  height: 100%;
+  border: none;
+}
+
+.condition-inputs div[class^="col-md-"] {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.condition-inputs div[class^="col-md-"]:first-child {
+  padding-left: 15px;
+}

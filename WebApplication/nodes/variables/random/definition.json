@@ -1,0 +1,39 @@
+{
+  "id": "random",
+  "name": "random",
+  "endpoints": [
+    {
+      "id": "number",
+      "name": "number",
+      "scope": "number",
+      "type": "number",
+      "direction": "out",
+      "field": {
+        "type": "text",
+        "placeholder": "min - max",
+        "label": "min/max range"
+      }
+    },
+    {
+      "id": "string",
+      "name": "string",
+      "scope": "string",
+      "type": "string",
+      "direction": "out"
+    },
+    {
+      "id": "position",
+      "name": "position",
+      "scope": "position",
+      "type": "position",
+      "direction": "out"
+    },
+    {
+      "id": "color",
+      "name": "color",
+      "scope": "color",
+      "type": "color",
+      "direction": "out"
+    } 
+  ]
+}

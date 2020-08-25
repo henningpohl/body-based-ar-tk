@@ -1,0 +1,20 @@
+{
+	"endpoints": [
+	  {
+			"direction": "in",
+			"id": "input",
+			"name": "input",
+			"scope": "array",
+			"type": "array"
+		},
+		{
+			"direction": "out",
+			"id": "output",
+			"name": "output",
+			"scope": "primitive",
+			"type": "primitive"
+		}
+	],
+	"id": "takeFirst",
+	"name": "takeFirst"
+}

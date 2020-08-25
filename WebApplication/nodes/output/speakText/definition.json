@@ -1,0 +1,27 @@
+{
+	"endpoints": [
+		{
+			"direction": "in",
+			"id": "text",
+			"name": "text",
+			"scope": "string",
+			"type": "string"
+		},
+		{
+			"direction": "in",
+			"id": "position",
+			"name": "position (optional)",
+			"scope": "position",
+			"type": "position"
+		},
+		{
+			"direction": "in",
+			"id": "trigger",
+			"name": "trigger (optional)",
+			"scope": "boolean",
+			"type": "boolean"
+		}
+	],
+	"id": "speakText",
+	"name": "speakText"
+}

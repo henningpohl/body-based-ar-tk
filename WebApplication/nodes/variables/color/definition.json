@@ -1,0 +1,27 @@
+{
+  "id": "color",
+  "name": "color",
+  "endpoints": [
+    {
+      "id": "color",
+      "name": "color",
+      "scope": "color colors",
+      "type": "color",
+      "direction": "out",
+      "field": {
+        "type": "color"
+      }
+    },
+    {
+      "id": "index",
+      "name": "add color",
+      "scope": "",
+      "type": "index",
+      "direction": "",
+      "field": {
+        "type": "index",
+        "copy": "color"
+      }
+    }
+  ]
+}

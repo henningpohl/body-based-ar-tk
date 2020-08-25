@@ -1,0 +1,20 @@
+{
+  "id": "path",
+  "name": "path render",
+  "endpoints": [
+    {
+      "id": "points",
+      "name": "points",
+      "scope": "position",
+      "type": "position",
+      "direction": "in"
+    },
+    {
+      "id": "color",
+      "name": "path color",
+      "scope": "color",
+      "type": "color",
+      "direction": "in"
+    }
+  ]
+}

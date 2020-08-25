@@ -1,0 +1,98 @@
+{% extends 'base.html'%}
+
+{% block title %}Project List{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="page-header">
+    <div class="row">
+      <div>
+        <h1 style="margin-top: 15px;">Available Projects</h1>
+        <p class="lead">Pick a project to work on or delete ones you want to get rid of (you can restore them if need be).</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col" width="10%">#</th>
+          <th scope="col" width="55%">Project name</th>
+          <th scope="col" width="20%">Created</th>
+          <th scope="col" colspan="3" width="15%">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in projects %}
+        <tr>
+          <th scope="row">{{p.id}}</th>
+          <td id="pname{{p.id}}">{{p.name}}</td>
+          <td>
+            <span class="badge badge-secondary badge-pill">{{p.created}}</span>
+          </td>
+          <td width="5%">
+              <a href="{{ url_for('editor.edit', pid=p.id) }}" class="btn btn-sm btn-block btn-primary" title="Launch"><i class="material-icons">launch</i></a>
+          </td>
+          <td width="5%">
+              <a href="#" class="btn btn-sm btn-block btn-warning" data-toggle="modal" data-pid="{{p.id}}" data-name="{{p.name}}" data-target="#renameDialog" title="Rename"><i class="material-icons">text_fields</i></a>
+          </td>
+          <td width="5%">
+              <a href="{{ url_for('projects.delete', pid=p.id) }}" class="btn btn-sm btn-block btn-danger" title="Delete"><i class="material-icons">delete</i></a>
+          </td>
+        </tr>
+        {% else %}
+        <tr>
+          <td>No projects yet</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal fade" id="renameDialog" role="dialog" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">	
+      <div class="modal-header">
+    	<h5 class="modal-title">Renaming Project</h5>
+      </div>
+      <div class="modal-body">
+      	<input type="hidden" class="form-control" id="projectID" />
+    	<input type="text" class="form-control" id="projectName" />
+      </div>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      	<button type="button" id="submitButton" class="btn btn-primary">Rename</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+$('#renameDialog').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget);
+  $('#projectID').val(button.data('pid'));
+  $('#projectName').val(button.data('name'));
+})
+$('#submitButton').on('click', function (event) {
+  var pid = $('#projectID').val();
+  var pname = $('#projectName').val()
+  var renameData = {'name': pname};
+  var renameURL = Flask.url_for("projects.rename", {"pid": pid});
+  $.ajax(renameURL, {
+  	type: "POST",
+  	data: renameData,
+  	success: function(data, textStatus, jqXHR) {
+  	  $('#pname' + pid).text(pname);
+  	  $('#renameDialog').modal('hide');
+  	},
+  	error: function(jqXHR, status, error) {
+  	  console.log(status + ": " + error);
+  	  $('#renameDialog').effect('shake');
+  	}
+  });
+})
+</script>
+{% endblock %}

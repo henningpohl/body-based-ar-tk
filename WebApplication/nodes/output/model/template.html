@@ -1,0 +1,22 @@
+<script type="text/x-handlebars-template" id="modelUploadTemplate">
+  <div class="border border-dark bg-primary drop-target mb-3" data-eid="{{id}}">
+    <h5>Drop model here</h5>
+    <h6>
+      Current file: 
+      <span class='filename'>
+        {{#if field.values.model.id}}
+          {{field.values.model.id}}
+        {{else}}
+          none
+        {{/if}}
+      </span>
+    </h6>
+    <div>
+      <a href='#'><i class="material-icons md-48">change_history</i></a>
+    </div>
+  </div>
+</script>
+
+<script>
+  Handlebars.registerPartial('model', $('#modelUploadTemplate').html());
+</script>

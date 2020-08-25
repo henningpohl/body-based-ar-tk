@@ -1,0 +1,13 @@
+{
+	"endpoints": [
+		{
+			"direction": "out",
+			"id": "face",
+			"name": "face",
+			"scope": "face faces",
+			"type": "face"
+		}
+	],
+	"id": "faceTracker",
+	"name": "face tracker"
+}

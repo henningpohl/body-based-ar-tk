@@ -1,0 +1,13 @@
+.nav-tabs .nav-link:hover {
+  background: #EBEBEB;
+  color: #4E5D6C;
+}
+
+.random .nav-link {
+  padding: 5px 10px;
+}
+
+.random .nav-tabs {
+  border-bottom: 1px solid #EBEBEB;
+  margin-bottom: 10px;
+}

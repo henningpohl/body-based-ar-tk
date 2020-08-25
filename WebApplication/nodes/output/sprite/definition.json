@@ -1,0 +1,27 @@
+{
+	"endpoints": [
+		{
+			"direction": "in",
+			"id": "image",
+			"name": "image",
+			"scope": "image",
+			"type": "image"
+		},
+		{
+			"direction": "in",
+			"id": "position",
+			"name": "position",
+			"scope": "position",
+			"type": "position"
+		},
+		{
+			"direction": "in",
+			"id": "show",
+			"name": "show (optional)",
+			"scope": "boolean",
+			"type": "boolean"
+		}
+	],
+	"id": "sprite",
+	"name": "sprite"
+}

@@ -1,0 +1,85 @@
+{% extends 'base.html'%}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="page-header">
+    <div class="row">
+      <div>
+        <h1 style="margin-top: 15px;">Welcome</h1>
+        <p class="lead">Check out Body-AR and develop some AR things!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row grid">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Dive into your projects</h5>
+          <div class="list-group">
+            {% for p in projects %}
+            <a href="{{url_for('editor.edit', pid=p.id)}}" class="list-group-item list-group-item-action">
+              {{p.name}} - #{{p.id}}
+            </a>
+            {% else %}
+            <a href="#" class="list-group-item list-group-item-action">No projects yet</a>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+        
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Your projects</h5>
+          <p class="card-text">Get an overview of, edit, or delete projects here.</p>
+          <a href="{{url_for('projects.list')}}" class="btn btn-sm btn-light">list your projects</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Create a new project</h5>
+          <p class="card-text">Get your new ideas on a canvas, with a new projects.</p>
+          <a href="{{url_for('projects.create')}}" class="btn btn-sm btn-light">create project</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Customize</h5>
+          <p class="card-text">Customize the toolkit, edit nodes, or create completely new ones. You can then use these in your AR prototypes.</p>
+          <a href="{{url_for('node.node_list')}}" class="btn btn-sm btn-light">edit toolkit</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">AR-toolkit documentation</h5>
+          <p class="card-text">Read more about the functionality provided by this toolkit and use this when building your next project.</p>
+          <a href="{{url_for('docs.artk')}}" class="btn btn-sm btn-light">artk docs</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/vendor/masonry.pkgd.min.js') }}"></script>
+<script>
+$('.grid').masonry({itemSelector: '.col-md-4'});
+</script>
+{% endblock %}
+

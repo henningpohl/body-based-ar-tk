@@ -1,0 +1,22 @@
+<script type="text/x-handlebars-template" id="colorInputTemplate">
+  <div class="btn-group">
+    <button class="btn btn-info btn-colorpicker btn-block push-top" id="picker-{{parentId}}-{{id}}" data-eid="{{id}}" data-value="{{lookup field.values id}}">pick a color</button>
+  </div>
+</script>
+
+<script>
+Handlebars.registerPartial('color', $('#colorInputTemplate').html())
+</script>
+
+<script type="text/x-handlebars-template" id="deleteableColorInputTemplate">
+  <div class="btn-group">
+    <button class="btn btn-info btn-colorpicker btn-block push-top" id="picker-{{parentId}}-{{id}}" data-eid="{{id}}" data-value="{{lookup field.values id}}">pick a color</button>
+    <button class="btn btn-secondary btn-sm delete-input" type="button">
+        <i class="material-icons md-14">close</i>
+      </button>
+  </div>
+</script>
+
+<script>
+Handlebars.registerPartial('deleteable-color', $('#deleteableColorInputTemplate').html())
+</script>

@@ -1,0 +1,31 @@
+{
+	"endpoints": [
+		{
+			"direction": "in",
+			"id": "input",
+			"name": "input",
+			"scope": "primitive",
+			"type": "primitive"
+		},
+		{
+			"direction": "",
+			"field": {
+				"copy": "input",
+				"type": "add"
+			},
+			"id": "add-in",
+			"name": "add input",
+			"scope": "",
+			"type": "add"
+		},
+		{
+			"direction": "out",
+			"id": "output",
+			"name": "output",
+			"scope": "array",
+			"type": "array"
+		}
+	],
+	"id": "merge",
+	"name": "merge"
+}

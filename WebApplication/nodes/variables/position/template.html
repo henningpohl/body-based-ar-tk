@@ -1,0 +1,46 @@
+<script type="text/x-handlebars-template" id="positionInputTemplate">
+  <form>
+    <div class="row">
+      <label class="col-form-label col-sm-2">X</label>
+      <input placeholder="{{field.placeholder}}" type="number" data-eid="x" data-type="{{type}}" step="0.1" class="form-control form-control-sm col-sm-8" value="{{lookup field.values 'x'}}" name="x" id="input-{{parentId}}-x" />
+    </div>
+    <div class="row">
+      <label class="col-form-label col-sm-2">Y</label>
+      <input placeholder="{{field.placeholder}}" type="number" data-eid="y" data-type="{{type}}" step="0.1" class="form-control form-control-sm col-sm-8" value="{{lookup field.values 'y'}}" name="y" id="input-{{parentId}}-y" />
+    </div>
+    <div class="row">
+      <label class="col-form-label col-sm-2">Z</label>
+      <input placeholder="{{field.placeholder}}" type="number" data-eid="z" data-type="{{type}}" step="0.1" class="form-control form-control-sm col-sm-8" value="{{lookup field.values 'z'}}" name="z" id="input-{{parentId}}-z" />
+    </div>
+  </form>
+</script>
+
+<script>
+Handlebars.registerPartial('position', $('#positionInputTemplate').html())
+</script>
+
+<script type="text/x-handlebars-template" id="deleteablePositionInputTemplate">
+  <form>
+    <div class="row">
+      <label class="col-form-label col-sm-2">X</label>
+      <input placeholder="{{field.placeholder}}" type="number" data-eid="x" data-type="{{type}}" step="0.1" class="form-control form-control-sm col-sm-8" value="{{lookup field.values 'x'}}" name="x" id="input-{{parentId}}-x" />
+    </div>
+    <div class="row">
+      <label class="col-form-label col-sm-2">Y</label>
+      <input placeholder="{{field.placeholder}}" type="number" data-eid="y" data-type="{{type}}" step="0.1" class="form-control form-control-sm col-sm-8" value="{{lookup field.values 'y'}}" name="y" id="input-{{parentId}}-y" />
+      <div class="input-group-append">
+        <button class="btn btn-secondary btn-sm delete-input" type="button">
+          <i class="material-icons md-14">close</i>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <label class="col-form-label col-sm-2">Z</label>
+      <input placeholder="{{field.placeholder}}" type="number" data-eid="z" data-type="{{type}}" step="0.1" class="form-control form-control-sm col-sm-8" value="{{lookup field.values 'z'}}" name="z" id="input-{{parentId}}-z" />
+    </div>
+  </form>
+</script>
+
+<script>
+Handlebars.registerPartial('deleteable-position', $('#deleteablePositionInputTemplate').html())
+</script>

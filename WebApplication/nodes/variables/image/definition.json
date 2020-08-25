@@ -1,0 +1,22 @@
+{
+	"endpoints": [
+		{
+			"direction": "out",
+			"id": "image",
+			"name": "image",
+			"scope": "image",
+			"type": "image"
+		},
+		{
+			"direction": "",
+			"field": {
+				"type": "imageFile"
+			},
+			"id": "image_file",
+			"name": "imageFile",
+			"scope": ""
+		}
+	],
+	"id": "image",
+	"name": "image"
+}

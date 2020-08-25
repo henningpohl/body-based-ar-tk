@@ -1,0 +1,51 @@
+{
+  "id": "singleArrayOp",
+  "name": "array operations",
+  "endpoints": [
+    {
+      "id": "input",
+      "name": "input",
+      "scope": "array",
+      "type": "array",
+      "direction": "in"
+    },
+    {
+      "id": "op",
+      "name": "operator",
+      "scope": "",
+      "type": "",
+      "direction": "",
+      "field": {
+        "type": "op",
+        "number_options": {
+          "min": "min of elements",
+          "max": "max of elements",
+          "count": "count elements",
+          "sum": "sum elements"
+        },
+        "position_options": {
+          "count": "count elements"
+        },
+        "string_options": {
+          "count": "count elements"
+        },
+        "color_options": {
+          "count": "count elements"
+        },
+        "face_options": {
+          "count": "count elements"
+        },
+        "pose_options": {
+          "count": "count elements"
+        }
+      }
+    },
+    {
+      "id": "output",
+      "name": "output",
+      "scope": "number",
+      "type": "number",
+      "direction": "out"
+    }
+  ]
+}

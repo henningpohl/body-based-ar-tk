@@ -1,0 +1,61 @@
+{
+	"endpoints": [
+		{
+			"direction": "in",
+			"id": "inputA",
+			"name": "input one",
+			"scope": "primitive",
+			"type": "primitive"
+		},
+		{
+			"direction": "in",
+			"id": "inputB",
+			"name": "input two",
+			"scope": "primitive",
+			"type": "primitive"
+		},
+		{
+			"direction": "",
+			"field": {
+				"color_options": {
+					"brighter": "brighter",
+					"darker": "darker"
+				},
+				"number_options": {
+					"eq": "==",
+					"geq": ">=",
+					"gt": ">",
+					"leq": "<=",
+					"lt": "<",
+					"neq": "!="
+				},
+				"position_options": {
+					"closer": "closer than",
+					"further": "further away than",
+					"higher": "higher than",
+					"left": "left of",
+					"lower": "lower than",
+					"right": "right of"
+				},
+				"string_options": {
+					"eq": "==",
+					"neq": "!="
+				},
+				"type": "op"
+			},
+			"id": "op",
+			"name": "operator",
+			"scope": "",
+			"type": ""
+		},
+		{
+			"direction": "out",
+			"id": "result",
+			"name": "result",
+			"scope": "boolean",
+			"type": "boolean"
+		}
+	],
+	"id": "compare",
+	"name": "compare"
+}

@@ -1,0 +1,116 @@
+@media print {    
+  body {
+    background-color: #fff !important;
+    font-size: 10pt !important;
+  }
+
+  .material-icons { 
+    font-size: 20px !important; 
+    color: #777 !important;
+  }
+
+  .card-header .material-icons {
+    display:none;
+  }
+
+  .endpoint-type {
+    display:none;
+  }
+
+  .drop-target {
+    display:none;
+  }
+
+  .jtk-endpoint {
+    transform: scale(0.6) !important;
+  }
+
+  .jtk-connector path {
+    stroke-width: 3px !important;
+  }
+
+  .window {
+    border-radius: 4px !important;
+    border: 1px solid #888 !important;
+    width: 135px !important;
+    background-color: #fafafa !important;
+    color: #222 !important;
+  }
+
+  .window[data-type='switch'] {
+    width: 210px !important;
+  }
+
+  .window[data-type='script'] {
+    width: 300px !important;
+  }
+
+  .list-group-item {
+    background-color: #fafafa !important;
+    padding: 0.1rem 0.2rem !important;
+    border: none !important;
+  }
+
+  .window .list-group-item .nout {
+    padding-right:15px !important;
+  }
+
+  .window .list-group-item .nin {
+    margin-left:-3px !important;
+  }
+
+  .endpoint-type.face {
+    color: #19c9ff !important;
+  }
+
+  .card-header {
+    padding: 2px !important;
+    font-weight: 400 !important;
+    font-size: 1.2em !important;
+    background-color: rgba(10,50,90,0.2) !important;
+    border-radius: 4px 4px 0px 0px !important;
+  }
+
+  .btn-block {
+    padding:2px !important;
+  }
+
+  .btn-sm {
+    display:none;
+  }
+
+  .window .list-group {
+    font-size: 10pt !important;
+    padding-bottom: 2px !important;
+    font-weight: 300 !important;
+  }
+
+  /*  change editor windows with
+  ace.edit("editor-editor-script_0-setup").setTheme("ace/theme/textmate");
+  ace.edit("editor-editor-script_0-loop").setTheme("ace/theme/textmate");
+  ace.edit("editor-editor-script_0-setup").setHighlightActiveLine(false);
+  ace.edit("editor-editor-script_0-loop").setHighlightActiveLine(false);
+  ace.edit("editor-editor-script_0-setup").setHighlightGutterLine(false);
+  ace.edit("editor-editor-script_0-loop").setHighlightGutterLine(false);
+  */
+
+  input {
+    border: 1px solid rgb(169,169,169) !important;
+  }
+
+  select {
+    border: 1px solid rgb(169,169,169) !important;
+  }
+
+  .build-array {
+    display:none;
+  }
+
+  /* .window {
+    border-bottom: 1px solid #aaa;
+  }
+  
+  .card-header {
+    background: #eeeeee !important;
+  } */
+}

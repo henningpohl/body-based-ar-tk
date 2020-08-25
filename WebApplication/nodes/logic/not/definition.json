@@ -1,0 +1,20 @@
+{
+  "id": "not",
+  "name": "not",
+  "endpoints": [
+    {
+      "id": "input",
+      "name": "input",
+      "scope": "boolean",
+      "type": "boolean",
+      "direction": "in out"
+    },
+    {
+      "id": "output",
+      "name": "output",
+      "scope": "boolean",
+      "type": "boolean",
+      "direction": "out"
+    }
+  ]
+}

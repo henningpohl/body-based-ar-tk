@@ -1,0 +1,185 @@
+/* Rules for sizing the icon. */
+.material-icons.md-14 { font-size: 14px; }
+.material-icons.md-16 { font-size: 16px; }
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+#bg-container {
+  position: absolute;
+  width: 500%;
+  height: 500%;
+  /* top: -3000px; */
+  /* left: -3000px; */
+  z-index: -1;
+  overflow: hidden;
+  background-image: url("/static/images/background.png");
+  /* transform: rotate(45deg); */
+}
+
+#canvas {
+  padding: 0;
+  margin: auto;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#content {
+  width: 100%;
+  padding: 0px;
+  min-height: 100vh;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.canvas-wide {
+    margin-left:0;
+}
+
+@keyframes marching_ants {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.menu-collapsed {
+    padding-left: 15px;
+}
+
+#last-saved {
+  position: absolute;
+  top: 85px;
+  right: 5px;
+}
+
+.dropdown-menu.show {
+  /* width: 100%; */
+}
+
+.jconfirm-title,
+.jconfirm-content {
+  color: #2B3E50 !important;
+}
+
+.jconfirm-content .list-group-item {
+  padding: 0px;
+}
+
+#deviceManager .dropdown-item {
+  white-space: normal;
+}
+
+#deviceManager .dropup {
+  margin-right: 15px;
+}
+
+#canvas {
+  min-height: 900px;
+  /* min-width: 800px; */
+  /* max-width: 800px; */
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.text-xl {
+  font-size: 2em;
+}
+
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
+}
+
+.spin {
+  animation-name: spin;
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+#deviceManager button {
+  border-radius: 5px;
+}
+
+#select-mode-nav {
+  position: absolute;
+  right: 0;
+}
+
+#select-mode-nav .dropdown-toggle::after {
+  content: none;
+}
+
+.text-small {
+  font-size: 0.9em;
+}
+
+/* #sidebar ul li a.active {
+  color: #4E5D6C;
+  background: rgb(63, 47, 211);
+} */
+
+.delete-block {
+  margin-top: -2px;
+  padding: 0px 0.2rem;
+}
+
+.delete-block i {
+  margin-bottom: 3px;
+}
+
+.delete-input:hover,
+.delete-block:hover {
+  color: #fff;
+  background-color: #d23430;
+  border-color: #c9302c;
+}
+
+.table thead th {
+  border-top: none !important;
+}
+
+.table a:not(.btn) {
+  color: inherit;
+}
+
+pre {
+  margin: 0px;
+}
+
+tt {
+  font-size: 0.9em;
+}
+
+@media print {    
+  .no-print, .no-print * {
+    display: none !important;
+  }
+  
+  @page {
+    size: A3 landscape;
+  }
+  
+  body {
+    background-color: #fff !important;
+  }
+
+  /* .window {
+    border-bottom: 1px solid #aaa;
+  }
+  
+  .card-header {
+    background: #eeeeee !important;
+  } */
+}

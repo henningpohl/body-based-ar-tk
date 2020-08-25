@@ -1,0 +1,13 @@
+{
+  "id": "appDebug",
+  "name": "in-app debug",
+  "endpoints": [
+    {
+      "id": "dbg",
+      "name": "debug",
+      "scope": "string number color position",
+      "type": "any",
+      "direction": "in"
+    }
+  ]
+}
